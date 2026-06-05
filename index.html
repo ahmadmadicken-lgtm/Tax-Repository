@@ -49,6 +49,52 @@ table.tt{width:100%;border-collapse:collapse;margin:16px 0;font-size:.82rem}tabl
 .ktag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.7rem;font-weight:700;font-family:"DM Mono",monospace;margin:2px}.ktag.law{background:rgba(59,130,246,.15);color:var(--bl)}.ktag.nw{background:rgba(16,185,129,.15);color:var(--gr)}
 #toast{position:fixed;bottom:28px;right:28px;background:var(--bg3);border:1px solid var(--b2);border-radius:10px;padding:14px 18px;font-size:.85rem;z-index:999;transform:translateY(80px);opacity:0;transition:all .3s;max-width:300px;box-shadow:0 8px 32px rgba(0,0,0,.4)}#toast.show{transform:translateY(0);opacity:1}
 .cv{transition:transform .2s;display:inline-block}.cv.open{transform:rotate(180deg)}
+/* GLOSARIUM */
+.gl-wrap{max-width:860px}.gl-search-wrap{position:relative;margin-bottom:20px}.gl-search-wrap svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--t3);width:16px;height:16px;pointer-events:none}.gl-search{background:var(--bg2);border:1px solid var(--b2);border-radius:10px;padding:11px 14px 11px 42px;color:var(--t);font-size:.95rem;font-family:"DM Sans",sans-serif;width:100%;outline:none;transition:border-color .15s}.gl-search:focus{border-color:var(--bl)}.gl-search::placeholder{color:var(--t3)}
+.gl-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}.gl-filter{padding:5px 14px;border-radius:20px;font-size:.75rem;font-weight:600;cursor:pointer;border:1px solid var(--b);color:var(--t3);transition:all .15s;font-family:"DM Mono",monospace}.gl-filter:hover{border-color:var(--b2);color:var(--t2)}.gl-filter.active{border-color:var(--bl);background:rgba(59,130,246,.12);color:var(--bl)}
+.gl-alpha-bar{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:20px}.gl-alpha{width:30px;height:30px;display:flex;align-items:center;justify-content:center;border-radius:6px;font-size:.75rem;font-weight:700;cursor:pointer;font-family:"DM Mono",monospace;border:1px solid var(--b);color:var(--t3);transition:all .15s}.gl-alpha:hover{border-color:var(--b2);color:var(--t2)}.gl-alpha.active{background:var(--ac);color:#000;border-color:var(--ac)}.gl-alpha.empty{opacity:.25;cursor:default;pointer-events:none}
+.gl-letter-group{margin-bottom:28px}.gl-letter-heading{font-family:"Syne",sans-serif;font-size:1.4rem;font-weight:800;color:var(--ac);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--b)}
+.gl-entry{background:var(--bg2);border:1px solid var(--b);border-radius:10px;padding:16px 18px;margin-bottom:8px;transition:border-color .15s;cursor:pointer}.gl-entry:hover{border-color:var(--b2)}.gl-entry.open{border-color:var(--bl)}
+.gl-entry-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.gl-term{font-family:"Syne",sans-serif;font-size:.95rem;font-weight:700;color:var(--t);line-height:1.3}.gl-term mark{background:rgba(245,158,11,.25);color:var(--ac);border-radius:2px;padding:0 2px}.gl-abbr{font-family:"DM Mono",monospace;font-size:.7rem;color:var(--t3);margin-top:2px}
+.gl-tags{display:flex;gap:5px;flex-wrap:wrap;flex-shrink:0}.gl-tag{padding:2px 8px;border-radius:12px;font-size:.65rem;font-weight:700;font-family:"DM Mono",monospace}.gl-tag.kat-kup{background:rgba(245,158,11,.15);color:var(--ac)}.gl-tag.kat-pph{background:rgba(59,130,246,.15);color:var(--bl)}.gl-tag.kat-ppn{background:rgba(16,185,129,.15);color:var(--gr)}.gl-tag.kat-umkm{background:rgba(139,92,246,.15);color:var(--pu)}.gl-tag.kat-tp{background:rgba(236,72,153,.15);color:#ec4899}.gl-tag.kat-coretax{background:rgba(249,115,22,.15);color:#f97316}.gl-tag.kat-sanksi{background:rgba(239,68,68,.15);color:var(--rd)}.gl-tag.kat-umum{background:rgba(100,116,139,.15);color:var(--t3)}
+.gl-body{margin-top:12px;padding-top:12px;border-top:1px solid var(--b);display:none}.gl-body.open{display:block}.gl-def{font-size:.86rem;line-height:1.7;color:var(--t2);margin-bottom:8px}.gl-def b{color:var(--t)}.gl-ref{font-size:.75rem;font-family:"DM Mono",monospace;color:var(--t3);margin-top:8px}.gl-ref span{color:var(--bl)}.gl-example{background:var(--bg4);border-left:2px solid var(--ac);border-radius:0 6px 6px 0;padding:10px 14px;margin-top:10px;font-size:.82rem;color:var(--t2);line-height:1.6}.gl-example-lbl{font-size:.65rem;font-weight:700;color:var(--ac);font-family:"DM Mono",monospace;margin-bottom:4px}
+.gl-empty{text-align:center;padding:48px 20px;color:var(--t3)}.gl-empty-icon{font-size:2.5rem;margin-bottom:12px}.gl-chevron{flex-shrink:0;transition:transform .2s;color:var(--t3)}.gl-entry.open .gl-chevron{transform:rotate(180deg)}.gl-stats-row{display:flex;gap:16px;align-items:center;margin-bottom:20px;flex-wrap:wrap}.gl-stat{font-size:.78rem;color:var(--t3)}.gl-stat b{color:var(--t2)}
+/* FLASHCARD */
+.fc-wrap{max-width:680px;margin:0 auto}
+.fc-deck-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-bottom:24px}
+.fc-deck{background:var(--bg2);border:1px solid var(--b);border-radius:12px;padding:18px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.fc-deck:hover{border-color:var(--b2);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.fc-deck::before{content:"";position:absolute;top:0;left:0;right:0;height:3px}
+.fc-deck.d0::before{background:var(--ac)}.fc-deck.d1::before{background:var(--bl)}.fc-deck.d2::before{background:var(--gr)}.fc-deck.d3::before{background:var(--pu)}.fc-deck.d4::before{background:#ec4899}.fc-deck.d5::before{background:#f97316}.fc-deck.d6::before{background:#06b6d4}.fc-deck.d7::before{background:#84cc16}.fc-deck.d8::before{background:var(--ac)}.fc-deck.d9::before{background:var(--bl)}
+.fc-deck-icon{font-size:1.8rem;margin-bottom:8px}
+.fc-deck-title{font-family:"Syne",sans-serif;font-size:.9rem;font-weight:700;margin-bottom:4px}
+.fc-deck-count{font-size:.75rem;color:var(--t3)}
+.fc-deck-prog{margin-top:10px;background:var(--bg4);border-radius:3px;height:3px;overflow:hidden}
+.fc-deck-fill{height:100%;border-radius:3px;transition:width .4s}
+.fc-scene{perspective:1000px;width:100%;max-width:560px;height:320px;margin:0 auto 28px;cursor:pointer}
+.fc-card{width:100%;height:100%;position:relative;transform-style:preserve-3d;transition:transform .5s cubic-bezier(.4,0,.2,1)}
+.fc-card.flipped{transform:rotateY(180deg)}
+.fc-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px;text-align:center}
+.fc-front{background:var(--bg2);border:1px solid var(--b2)}
+.fc-back{background:var(--bg3);border:1px solid var(--b2);transform:rotateY(180deg)}
+.fc-label{font-size:.65rem;font-family:"DM Mono",monospace;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;opacity:.6}
+.fc-front .fc-label{color:var(--ac)}
+.fc-back .fc-label{color:var(--gr)}
+.fc-q{font-family:"Syne",sans-serif;font-size:1.15rem;font-weight:700;line-height:1.4;color:var(--t)}
+.fc-a{font-size:.95rem;line-height:1.6;color:var(--t2)}
+.fc-a b{color:var(--t);font-weight:600}
+.fc-hint{font-size:.72rem;color:var(--t3);margin-top:16px;display:flex;align-items:center;gap:5px}
+.fc-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.fc-counter{font-family:"DM Mono",monospace;font-size:.85rem;color:var(--t3)}
+.fc-pbar{flex:1;margin:0 16px;background:var(--bg4);border-radius:4px;height:6px;overflow:hidden}
+.fc-pfill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--ac),var(--ac2));transition:width .3s}
+.fc-actions{display:flex;gap:10px;justify-content:center;margin-top:8px}
+.fc-btn{width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;font-size:1.3rem;transition:all .15s;display:flex;align-items:center;justify-content:center}
+.fc-btn.again{background:rgba(239,68,68,.15);color:var(--rd)}.fc-btn.again:hover{background:rgba(239,68,68,.25)}
+.fc-btn.hard{background:rgba(245,158,11,.15);color:var(--ac)}.fc-btn.hard:hover{background:rgba(245,158,11,.25)}
+.fc-btn.good{background:rgba(16,185,129,.15);color:var(--gr)}.fc-btn.good:hover{background:rgba(16,185,129,.25)}
+.fc-result{text-align:center;padding:40px 20px}
+.fc-category-badge{display:inline-block;background:rgba(139,92,246,.15);color:var(--pu);font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:4px;font-family:"DM Mono",monospace;margin-bottom:12px}
 .fx{display:flex}.fxc{align-items:center}.fxb{justify-content:space-between}.mt4{margin-top:16px}.mt6{margin-top:24px}.mb4{margin-bottom:16px}.mb3{margin-bottom:12px}
 .ta{color:var(--ac)}.tg{color:var(--gr)}.tb2{color:var(--bl)}.tr2{color:var(--rd)}.tm{color:var(--t3)}.tsm{font-size:.8rem}.txs{font-size:.72rem}.fw{font-weight:700}.fsyn{font-family:"Syne",sans-serif}.fmono{font-family:"DM Mono",monospace}
 </style></head><body>
@@ -66,6 +112,8 @@ table.tt{width:100%;border-collapse:collapse;margin:16px 0;font-size:.82rem}tabl
     <div class="ni" id="ni-quiz" onclick="nav('quiz')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz Master<span class="nbdg">20</span></div>
     <div class="ni" id="ni-sim" onclick="nav('sim')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Simulator</div>
     <div class="snl">Referensi</div>
+    <div class="ni" id="ni-flash" onclick="nav('flash')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M12 8v8M8 12h8"/></svg>Flashcard<span class="nbdg" style="background:var(--pu)">Baru</span></div>
+    <div class="ni" id="ni-glos" onclick="nav('glos')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/></svg>Glosarium</div>
     <div class="ni" id="ni-kb" onclick="nav('kb')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Knowledge Base</div>
     <div class="ni" id="ni-prog" onclick="nav('prog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Progress & Badge</div>
   </nav>
@@ -286,19 +334,21 @@ var KB=[
 
 // ===== CORE FUNCTIONS =====
 function nav(page){
-  ['dashboard','modules','quiz','sim','kb','prog'].forEach(function(p){
+  ['dashboard','modules','quiz','sim','flash','glos','kb','prog'].forEach(function(p){
     var el=document.getElementById('ni-'+p);
     if(el) el.classList.remove('active');
   });
   var ni=document.getElementById('ni-'+page);
   if(ni) ni.classList.add('active');
-  var titles={dashboard:'Dashboard',modules:'Modul Belajar',quiz:'Quiz Master',sim:'Simulator Pajak',kb:'Knowledge Base',prog:'Progress & Badge',lesson:'Materi Pembelajaran'};
+  var titles={dashboard:'Dashboard',modules:'Modul Belajar',quiz:'Quiz Master',sim:'Simulator Pajak',flash:'Flashcard Mode',glos:'Glosarium Pajak',kb:'Knowledge Base',prog:'Progress & Badge',lesson:'Materi Pembelajaran'};
   document.getElementById('tb-t').textContent=titles[page]||'Tax Academy';
   var m=document.getElementById('main');
   if(page==='dashboard') m.innerHTML=renderDash();
   else if(page==='modules') m.innerHTML=renderMods();
   else if(page==='quiz') m.innerHTML=renderQuizPage();
   else if(page==='sim') m.innerHTML=renderSim();
+  else if(page==='glos') m.innerHTML=renderGlos();
+  else if(page==='flash') m.innerHTML=renderFlash();
   else if(page==='kb') m.innerHTML=renderKB();
   else if(page==='prog') m.innerHTML=renderProg();
   else if(page==='lesson') m.innerHTML=renderLesson();
@@ -697,6 +747,275 @@ function renderProg(){
     +'<div style="margin-bottom:24px"><div class="st" style="font-size:1rem;margin-bottom:16px">Progress per Modul</div>'+modsHtml+'</div>'
     +'<div class="st" style="font-size:1rem;margin-bottom:16px">&#x1F3C5; Badge Koleksi</div>'
     +'<div class="bg">'+badgesHtml+'</div>';
+}
+
+// ===== FLASHCARD DATA =====
+var DECKS=[
+{title:'KUP & Coretax',icon:'&#x1F510;',color:'d0',cards:[
+  {q:'Apa itu Akun Wajib Pajak (AWP)?',a:'Kotak surat digital resmi WP di portal Coretax. Semua keputusan dan dokumen DJP dikirim ke sini. <b>Tanggal masuk AWP = tanggal resmi penerimaan dokumen.</b>',cat:'Coretax'},
+  {q:'Berapa batas waktu DJP menerbitkan SKPKB?',a:'<b>5 tahun</b> sejak saat terutangnya pajak atau berakhirnya Masa/Tahun Pajak (Pasal 13 UU KUP).',cat:'KUP'},
+  {q:'Apa format NPWP baru untuk WP OP Penduduk Indonesia?',a:'<b>NIK (16 digit)</b> atau NPWP 15 digit lama — keduanya valid berdasarkan PENG-6/PJ.09/2024.',cat:'NIK-NPWP'},
+  {q:'Berapa lama batas waktu respons SP2DK di era Coretax?',a:'<b>14 hari kerja</b> sejak diterima di AWP. Bila tidak direspons, DJP dapat menerbitkan Surat Perintah Pemeriksaan.',cat:'SP2DK'},
+  {q:'Sanksi bunga SKPKB dihitung bagaimana di era UU HPP?',a:'<b>(Suku Bunga Acuan + 20%) ÷ 12</b> per bulan, maksimum 24 bulan. Tidak lagi flat 2%/bulan.',cat:'Sanksi'},
+  {q:'Berapa sanksi bila keberatan ditolak dan WP tidak banding?',a:'<b>50%</b> dari selisih pajak dalam SK Keberatan dikurangi pajak yang telah dibayar (Pasal 25(9) UU KUP).',cat:'Keberatan'},
+  {q:'Berapa sanksi bila banding ditolak di Pengadilan Pajak?',a:'<b>100%</b> dari selisih pajak dalam Putusan Banding dikurangi yang telah dibayar (Pasal 27(5d) UU KUP).',cat:'Banding'},
+  {q:'Berapa lama dokumen pembukuan harus disimpan?',a:'Minimal <b>10 tahun</b> di wilayah Indonesia (Pasal 28 UU KUP).',cat:'Pembukuan'},
+  {q:'Apa syarat pengajuan banding ke Pengadilan Pajak?',a:'WP wajib membayar <b>50% dari pajak yang terutang</b> dalam SKPKB sebagai syarat mengajukan banding.',cat:'Banding'}
+]},
+{title:'PPh 21 & TER',icon:'&#x1F464;',color:'d1',cards:[
+  {q:'Berapa PTKP untuk status TK/0?',a:'<b>Rp54.000.000</b> per tahun (WP sendiri, tidak kawin, tidak ada tanggungan).',cat:'PTKP'},
+  {q:'Berapa PTKP untuk status K/2?',a:'<b>Rp67.500.000</b> per tahun (Rp54 juta + kawin Rp4,5 juta + 2 tanggungan Rp9 juta).',cat:'PTKP'},
+  {q:'Berapa tarif PPh OP lapisan tertinggi per UU HPP?',a:'<b>35%</b> untuk PKP di atas Rp5 miliar. Lapisan ini ditambahkan oleh UU HPP No. 7/2021.',cat:'Tarif'},
+  {q:'TER Kategori A berlaku untuk status PTKP apa?',a:'<b>TK/0 dan TK/1</b> (tidak kawin tanpa tanggungan dan tidak kawin dengan 1 tanggungan).',cat:'TER'},
+  {q:'TER Kategori C berlaku untuk status PTKP apa?',a:'<b>K/2 dan K/3</b> (kawin dengan 2 atau 3 tanggungan).',cat:'TER'},
+  {q:'Pada bulan apa terjadi rekonsiliasi PPh 21 dengan metode TER?',a:'<b>Bulan Desember</b>. PPh 21 Desember = PPh terutang setahun (tarif Pasal 17) dikurangi total PPh yang sudah dipotong Januari-November.',cat:'TER'},
+  {q:'Apa manfaat metode Gross Up PPh 21 bagi perusahaan?',a:'Tunjangan pajak yang diberikan menjadi <b>biaya deductible</b> (dapat mengurangi PPh Badan), bukan biaya ditanggung yang tidak bisa dikurangi.',cat:'Gross Up'},
+  {q:'PPh pasal apa saja yang dicakup e-Bupot Unifikasi?',a:'<b>PPh Pasal 4(2), 15, 22, 23, dan 26</b> dalam satu platform terintegrasi di portal Coretax.',cat:'e-Bupot'},
+  {q:'Berapa tarif PPh 21 lebih tinggi bila penerima tidak memiliki NPWP?',a:'<b>Lebih tinggi 20%</b> dari tarif normal (Pasal 21(5a) UU PPh).',cat:'Tarif'}
+]},
+{title:'PP 20/2026 — UMKM',icon:'&#x1F3EA;',color:'d2',cards:[
+  {q:'Berapa batas omzet untuk PPh Final 0,5% per PP 20/2026?',a:'<b>Rp4.800.000.000</b> (Rp4,8 miliar) per tahun pajak.',cat:'PP 20/2026'},
+  {q:'Apakah CV boleh menggunakan PPh Final 0,5% mulai 2027?',a:'<b>Tidak.</b> PP 20/2026 menghapus CV dari daftar subjek PPh Final. Hanya ada masa transisi s/d akhir 2026.',cat:'PP 20/2026'},
+  {q:'Apa yang dimaksud Pasal 56(3)a PP 20/2026?',a:'Penghasilan dari <b>jasa pekerjaan bebas</b> (notaris, dokter, konsultan, konten kreator) dikecualikan dari PPh Final 0,5% meski omzetnya di bawah Rp4,8 M.',cat:'Pekerjaan Bebas'},
+  {q:'Apa yang dimaksud Pasal 58(3) PP 20/2026?',a:'Omzet suami, istri, <b>dan semua PT Perorangan</b> yang didirikan keduanya digabungkan untuk menentukan apakah masih memenuhi batas Rp4,8 M.',cat:'Penggabungan Omzet'},
+  {q:'Jenis badan usaha apa yang BOLEH pakai PPh Final 0,5%?',a:'<b>WP OP</b> (bukan pekerjaan bebas), <b>PT Perorangan</b>, dan <b>Koperasi</b> — dengan omzet tidak melebihi Rp4,8 M.',cat:'PP 20/2026'},
+  {q:'Apa yang dimaksud Pasal 20A UU PPh yang disisipkan PP 20/2026?',a:'Biaya <b>suap, gratifikasi</b>, dan pemberian lain sesuai UU Tipikor (termasuk kepada pejabat publik asing) adalah <b>NON-DEDUCTIBLE</b> tanpa pengecualian.',cat:'Anti-Mafia'},
+  {q:'Mengapa CV tidak boleh PPh Final 0,5% mulai 2027?',a:'PP 20/2026 secara eksplisit menghapus CV dari daftar subjek yang diizinkan. Alasannya: keadilan — CV bukan badan usaha "perorangan" yang menjadi target rezim ini.',cat:'PP 20/2026'},
+  {q:'Bila seorang dokter juga memiliki toko online (omzet Rp500 juta), bagaimana pajaknya?',a:'Toko online: <b>BISA PPh Final 0,5%</b>. Jasa dokter: <b>TIDAK BISA</b>, dikenai tarif progresif (NPPN + Pasal 17). Keduanya dipisah.',cat:'Pekerjaan Bebas'}
+]},
+{title:'PPh Badan & Rekonsiliasi',icon:'&#x1F3E2;',color:'d3',cards:[
+  {q:'Berapa tarif PPh Badan umum?',a:'<b>22%</b> dari Penghasilan Kena Pajak (PKP) Badan (Pasal 17(1)b UU PPh s.t.d. UU HPP).',cat:'PPh Badan'},
+  {q:'Apa itu fasilitas Pasal 31E?',a:'Badan dengan omzet bruto <b>s/d Rp50 miliar</b> mendapat diskon 50%: porsi PKP dari omzet s/d Rp4,8 M dikenai tarif <b>11%</b> (bukan 22%).',cat:'Pasal 31E'},
+  {q:'Bagaimana rumus porsi PKP yang mendapat diskon Pasal 31E?',a:'<b>PKP Diskon = (Rp4,8 M ÷ Total Omzet) × PKP</b>. Sisanya dikenai tarif 22% normal.',cat:'Pasal 31E'},
+  {q:'Apakah denda keterlambatan pajak dapat dikurangkan dari penghasilan bruto?',a:'<b>Tidak.</b> Sanksi administrasi berupa denda, bunga, dan kenaikan pajak adalah non-deductible (Pasal 9(1)k UU PPh).',cat:'Koreksi Fiskal'},
+  {q:'Apa itu koreksi fiskal positif?',a:'Penyesuaian yang <b>menambah laba fiskal</b> (menambah PKP) karena ada biaya komersial yang tidak boleh dikurangi secara fiskal, seperti biaya suap, denda pajak, atau entertainment tanpa nominatif.',cat:'Rekonsiliasi'},
+  {q:'Apa itu koreksi fiskal negatif?',a:'Penyesuaian yang <b>mengurangi laba fiskal</b> (mengurangi PKP) karena ada penghasilan yang bukan objek pajak atau sudah dikenai PPh Final, seperti dividen dari perusahaan Indonesia dengan kepemilikan ≥25%.',cat:'Rekonsiliasi'},
+  {q:'Dalam studi kasus PT Maju Bersama, berapa total PPh Badan dengan PKP Rp3,195 M dan omzet Rp25 M?',a:'<b>Rp635.316.000</b> (porsi diskon 11% = Rp67.584.000 + porsi normal 22% = Rp567.732.000).',cat:'Studi Kasus'}
+]},
+{title:'PPN 12%',icon:'&#x1F9FE;',color:'d4',cards:[
+  {q:'Sejak kapan tarif PPN 12% berlaku?',a:'<b>1 Januari 2025</b>, berdasarkan UU HPP No. 7/2021. Sebelumnya 11% (sejak 1 April 2022).',cat:'PPN'},
+  {q:'Berapa tarif PPN untuk ekspor BKP/JKP?',a:'<b>0%</b> (nol persen). Ini bertujuan mendorong ekspor dan hilirisasi industri.',cat:'PPN'},
+  {q:'Apa perbedaan fasilitas PPN Tidak Dipungut vs Dibebaskan?',a:'<b>Tidak Dipungut:</b> PPN terutang tapi tidak dipungut, PM pembeli masih bisa dikreditkan. <b>Dibebaskan:</b> tidak ada PPN, PM pembeli tidak bisa dikreditkan.',cat:'Fasilitas PPN'},
+  {q:'Apa akibat Faktur Pajak Cacat bagi pembeli?',a:'Pajak Masukan (PM) <b>tidak dapat dikreditkan</b> (Pasal 9(8)f UU PPN).',cat:'Faktur Pajak'},
+  {q:'Apa akibat Faktur Pajak Cacat bagi penjual?',a:'Diterbitkan STP dengan denda <b>1% dari Dasar Pengenaan Pajak</b> (Pasal 14 UU KUP).',cat:'Faktur Pajak'},
+  {q:'Apakah jasa pendidikan dikenakan PPN?',a:'<b>Tidak.</b> Jasa pendidikan termasuk Jasa Bukan JKP yang dikecualikan dari pengenaan PPN (Pasal 4A UU PPN).',cat:'Objek PPN'},
+  {q:'PM yang belum dikreditkan dapat dikreditkan paling lama berapa masa pajak berikutnya?',a:'<b>3 masa pajak</b> berikutnya. Lewat dari itu, PM hangus tidak bisa dikreditkan.',cat:'PPN'},
+  {q:'Apa syarat agar biaya material dapat dikecualikan dari dasar PPh 23?',a:'Harus ada <b>rincian terpisah yang jelas</b> antara material dan jasa dalam tagihan, dilengkapi bukti faktur pembelian material dari pihak ketiga.',cat:'PPh 23'}
+]},
+{title:'PPh 22 & 23',icon:'&#x2702;&#xFE0F;',color:'d5',cards:[
+  {q:'Berapa tarif PPh 22 impor dengan API?',a:'<b>2,5%</b> dari nilai impor (CIF + Bea Masuk).',cat:'PPh 22'},
+  {q:'Berapa tarif PPh 22 impor tanpa API?',a:'<b>7,5%</b> dari nilai impor — tiga kali lebih tinggi dari tarif dengan API.',cat:'PPh 22'},
+  {q:'Berapa tarif PPh 23 atas jasa?',a:'<b>2%</b> dari jumlah bruto. Bila penerima tidak memiliki NPWP, tarif menjadi <b>4%</b> (lebih tinggi 100%).',cat:'PPh 23'},
+  {q:'Apa itu PMK 141/2015 dalam konteks PPh 23?',a:'Peraturan yang memuat <b>daftar lengkap jasa</b> yang wajib dipotong PPh 23 tarif 2%, termasuk jasa outsourcing, iklan, katering, freight forwarding, pelatihan, dll.',cat:'PPh 23'},
+  {q:'Apa kepanjangan API dalam konteks impor?',a:'<b>Angka Pengenal Impor</b> — izin impor resmi yang dikeluarkan oleh Kementerian Perdagangan.',cat:'PPh 22'},
+  {q:'Bila importir tidak memiliki NPWP, berapa tarif PPh 22-nya?',a:'Lebih tinggi <b>100% dari tarif normal</b>. Jadi: dengan API = 5%, tanpa API = 15%.',cat:'PPh 22'}
+]},
+{title:'Transfer Pricing & GAAR',icon:'&#x1F30F;',color:'d6',cards:[
+  {q:'Berapa persentase kepemilikan yang menunjukkan hubungan istimewa?',a:'<b>25% atau lebih</b> kepemilikan/penyertaan modal langsung maupun tidak langsung (Pasal 18(4) UU PPh).',cat:'Transfer Pricing'},
+  {q:'Apa metode transfer pricing yang paling umum digunakan?',a:'<b>TNMM (Transactional Net Margin Method)</b> — membandingkan margin laba neto transaksi pihak berafiliasi dengan transaksi independen yang sebanding.',cat:'Transfer Pricing'},
+  {q:'Kapan WP wajib menyusun Country-by-Country Report (CbCR)?',a:'Bila omzet konsolidasi grup multinasional mencapai <b>Rp11 triliun atau lebih</b> (PMK 172/2023).',cat:'Transfer Pricing'},
+  {q:'Apa itu prinsip Arm\'s Length dalam transfer pricing?',a:'Harga transaksi antar pihak berafiliasi harus <b>sebanding dengan harga yang terjadi antara pihak-pihak independen</b> dalam kondisi yang sama.',cat:'Transfer Pricing'},
+  {q:'Apa itu Substance over Form dalam GAAR?',a:'DJP dapat mengabaikan bentuk hukum suatu transaksi dan menilai berdasarkan <b>substansi ekonomisnya</b> untuk mencegah penghindaran pajak.',cat:'GAAR'},
+  {q:'Apa itu CFC Rules (Pasal 18(2) UU PPh)?',a:'DJP berwenang menetapkan saat diterimanya dividen dari <b>perusahaan anak di negara bertarif pajak rendah</b>, agar tidak ditunda terus-menerus.',cat:'GAAR'},
+  {q:'Dokumentasi apa yang wajib dibuat untuk transfer pricing (PMK 172/2023)?',a:'<b>Master File</b> (informasi grup global) dan <b>Local File</b> (analisis transaksi afiliasi lokal + benchmark). CbCR untuk grup omzet ≥ Rp11 T.',cat:'Transfer Pricing'}
+]},
+{title:'Angka & Batas Kritis',icon:'&#x1F4CA;',color:'d7',cards:[
+  {q:'Berapa batas omzet untuk menggunakan metode pencatatan (bukan pembukuan)?',a:'Di bawah <b>Rp4.800.000.000</b> (Rp4,8 miliar) per tahun untuk WP OP dengan usaha.',cat:'KUP'},
+  {q:'Berapa batas omzet untuk mendapat fasilitas Pasal 31E PPh Badan?',a:'Omzet bruto <b>sampai dengan Rp50 miliar</b> per tahun.',cat:'PPh Badan'},
+  {q:'Berapa tarif PPh OP lapisan pertama (5%)?',a:'Untuk PKP <b>sampai dengan Rp60 juta</b> per tahun.',cat:'Tarif PPh'},
+  {q:'Berapa tarif PPh OP lapisan kedua (15%)?',a:'Untuk PKP <b>Rp60 juta sampai Rp250 juta</b> per tahun.',cat:'Tarif PPh'},
+  {q:'Berapa tarif PPh OP lapisan ketiga (25%)?',a:'Untuk PKP <b>Rp250 juta sampai Rp500 juta</b> per tahun.',cat:'Tarif PPh'},
+  {q:'Berapa tarif PPh OP lapisan keempat (30%)?',a:'Untuk PKP <b>Rp500 juta sampai Rp5 miliar</b> per tahun.',cat:'Tarif PPh'},
+  {q:'Berapa ambang batas CbCR untuk grup multinasional?',a:'Omzet konsolidasi <b>Rp11 triliun atau lebih</b> (PMK 172/2023).',cat:'Transfer Pricing'},
+  {q:'Berapa tarif Faktur Pajak Cacat untuk penjual?',a:'<b>1% dari DPP</b> (Dasar Pengenaan Pajak) sebagai sanksi STP (Pasal 14 UU KUP).',cat:'PPN'},
+  {q:'Berapa batas waktu pengajuan keberatan?',a:'<b>3 bulan</b> sejak tanggal SKPKB/SKPKBT/SKPN/SKPLB diterima WP (Pasal 25(3) UU KUP).',cat:'Keberatan'},
+  {q:'Berapa lama DJP memutus keberatan?',a:'Maksimal <b>12 bulan</b> sejak tanggal surat keberatan diterima. Bila lewat waktu, keberatan dianggap dikabulkan.',cat:'Keberatan'}
+]},
+{title:'Regulasi & Dasar Hukum',icon:'&#x1F4DC;',color:'d8',cards:[
+  {q:'PP 20/2026 mengatur tentang apa?',a:'Penyempurnaan rezim <b>PPh Final UMKM 0,5%</b>: penghapusan CV/PT biasa, larangan biaya suap (Pasal 20A), dan penggabungan omzet suami-istri (Pasal 58(3)).',cat:'Regulasi'},
+  {q:'PMK 81/2024 mengatur tentang apa?',a:'"Kitab Hukum Coretax" — mengatur <b>AWP, pendaftaran WP, pengukuhan PKP</b>, dan seluruh tata cara administrasi perpajakan di era digital.',cat:'Regulasi'},
+  {q:'PP 58/2023 mengatur tentang apa?',a:'<b>Tarif Efektif Rata-rata (TER) PPh 21</b> — 3 kategori (A, B, C) berdasarkan status PTKP untuk menyederhanakan pemotongan bulanan.',cat:'Regulasi'},
+  {q:'PMK 168/2023 mengatur tentang apa?',a:'Petunjuk teknis tata cara <b>pemotongan PPh Pasal 21 dan 26</b> — termasuk mekanisme TER, penghasilan yang dipotong, dan kewajiban pelaporan.',cat:'Regulasi'},
+  {q:'PENG-6/PJ.09/2024 mengatur tentang apa?',a:'Teknis penggunaan <b>NIK sebagai NPWP</b> dalam dokumen perpajakan — format, masa berlaku dual format, dan integrasi dengan sistem Coretax.',cat:'Regulasi'},
+  {q:'PMK 141/2015 mengatur tentang apa?',a:'Daftar lengkap <b>jasa yang wajib dipotong PPh Pasal 23</b> dengan tarif 2%, menggantikan daftar jenis jasa lainnya sebelumnya.',cat:'Regulasi'},
+  {q:'PMK 172/2023 mengatur tentang apa?',a:'Kewajiban <b>dokumentasi Transfer Pricing</b>: Master File, Local File, dan Country-by-Country Report (CbCR) untuk grup omzet ≥ Rp11 T.',cat:'Regulasi'}
+]}
+];
+
+// ===== FLASHCARD STATE =====
+var FS={
+  mode:'home',   // home | study | result
+  deckIdx:0,
+  cardIdx:0,
+  flipped:false,
+  ratings:{},    // deckIdx -> {cardIdx -> 'again'|'hard'|'good'}
+  queue:[],      // card indices to study
+  studied:0
+};
+
+function renderFlash(){
+  if(FS.mode==='home') return renderFlashHome();
+  if(FS.mode==='study') return renderFlashStudy();
+  if(FS.mode==='result') return renderFlashResult();
+  return '';
+}
+
+function renderFlashHome(){
+  var total=DECKS.reduce(function(a,d){return a+d.cards.length;},0);
+  var totalStudied=Object.keys(FS.ratings).reduce(function(a,dk){
+    return a+Object.keys(FS.ratings[dk]).length;
+  },0);
+  var deckCards=DECKS.map(function(d,i){
+    var r=FS.ratings[i]||{};
+    var done=Object.keys(r).length;
+    var good=Object.values(r).filter(function(v){return v==='good';}).length;
+    var pct=d.cards.length>0?Math.round(done/d.cards.length*100):0;
+    var COLS=['var(--ac)','var(--bl)','var(--gr)','var(--pu)','#ec4899','#f97316','#06b6d4','#84cc16','var(--ac)','var(--bl)'];
+    return '<div class="fc-deck d'+i+'" onclick="startDeck('+i+')">'
+      +'<div class="fc-deck-icon">'+d.icon+'</div>'
+      +'<div class="fc-deck-title">'+d.title+'</div>'
+      +'<div class="fc-deck-count">'+d.cards.length+' kartu'+(done>0?' &bull; '+done+' dipelajari':'')+'</div>'
+      +'<div class="fc-deck-prog"><div class="fc-deck-fill" style="width:'+pct+'%;background:'+COLS[i]+'"></div></div></div>';
+  }).join('');
+  var statsHtml='<div class="g4 mb4">'
+    +'<div class="sc ca"><div class="sv">'+total+'</div><div class="sl">Total Kartu</div></div>'
+    +'<div class="sc cb"><div class="sv">'+totalStudied+'</div><div class="sl">Sudah Dipelajari</div></div>'
+    +'<div class="sc cc"><div class="sv">'+DECKS.length+'</div><div class="sl">Deck Tersedia</div></div>'
+    +'<div class="sc cd"><div class="sv">'+Math.round(totalStudied/total*100)+'%</div><div class="sl">Progress</div></div></div>';
+  return '<div class="fc-wrap">'
+    +'<div class="st">&#x1F9F8; Flashcard Mode</div>'
+    +'<div style="color:var(--t2);font-size:.88rem;margin-bottom:24px">Pilih deck dan balik kartu untuk belajar. Rating <b>Lagi</b> / <b>Susah</b> / <b>Hafal</b> membantu melacak progress.</div>'
+    +statsHtml
+    +'<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">'
+    +'<div class="st" style="margin-bottom:0">Pilih Deck</div>'
+    +'<button class="btn btn-p btn-sm" onclick="startAll()">&#x1F4D6; Semua Deck ('+total+' kartu)</button></div>'
+    +'<div class="fc-deck-grid">'+deckCards+'</div></div>';
+}
+
+function startDeck(i){
+  FS.deckIdx=i;
+  FS.queue=DECKS[i].cards.map(function(_,j){return j;});
+  // Shuffle
+  for(var k=FS.queue.length-1;k>0;k--){var j2=Math.floor(Math.random()*(k+1));var tmp=FS.queue[k];FS.queue[k]=FS.queue[j2];FS.queue[j2]=tmp;}
+  FS.cardIdx=0;FS.flipped=false;FS.studied=0;FS.mode='study';
+  nav('flash');
+}
+
+function startAll(){
+  FS.deckIdx=-1;
+  // Build flat queue: {di, ci}
+  var all=[];
+  DECKS.forEach(function(d,di){d.cards.forEach(function(_,ci){all.push({di:di,ci:ci});});});
+  for(var k=all.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1));var tmp=all[k];all[k]=all[j];all[j]=tmp;}
+  FS.queue=all;FS.cardIdx=0;FS.flipped=false;FS.studied=0;FS.mode='study';
+  nav('flash');
+}
+
+function renderFlashStudy(){
+  var isAll=FS.deckIdx===-1;
+  var item=FS.queue[FS.cardIdx];
+  var card=isAll?DECKS[item.di].cards[item.ci]:DECKS[FS.deckIdx].cards[item];
+  var total=FS.queue.length;
+  var pct=Math.round((FS.cardIdx/total)*100);
+  var deckName=isAll?DECKS[item.di].title:DECKS[FS.deckIdx].title;
+
+  var flipHint=FS.flipped?'':'<div class="fc-hint"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M13 12H3"/></svg> Klik untuk balik</div>';
+  var cardHtml='<div class="fc-scene" onclick="flipCard()">'
+    +'<div class="fc-card'+(FS.flipped?' flipped':'')+'" id="fc-card">'
+    +'<div class="fc-face fc-front">'
+    +'<div class="fc-category-badge">'+card.cat+'</div>'
+    +'<div class="fc-label">PERTANYAAN</div>'
+    +'<div class="fc-q">'+card.q+'</div>'
+    +flipHint+'</div>'
+    +'<div class="fc-face fc-back">'
+    +'<div class="fc-label">JAWABAN</div>'
+    +'<div class="fc-a">'+card.a+'</div></div>'
+    +'</div></div>';
+
+  var ratingHtml='';
+  if(FS.flipped){
+    ratingHtml='<div style="text-align:center;margin-bottom:8px;font-size:.78rem;color:var(--t3)">Seberapa hafal?</div>'
+      +'<div class="fc-actions">'
+      +'<div style="text-align:center">'
+      +'<button class="fc-btn again" onclick="rateCard(\'again\')" title="Lagi">&#x1F504;</button>'
+      +'<div style="font-size:.65rem;color:var(--rd);margin-top:4px">Lagi</div></div>'
+      +'<div style="text-align:center">'
+      +'<button class="fc-btn hard" onclick="rateCard(\'hard\')" title="Susah">&#x1F914;</button>'
+      +'<div style="font-size:.65rem;color:var(--ac);margin-top:4px">Susah</div></div>'
+      +'<div style="text-align:center">'
+      +'<button class="fc-btn good" onclick="rateCard(\'good\')" title="Hafal">&#x2705;</button>'
+      +'<div style="font-size:.65rem;color:var(--gr);margin-top:4px">Hafal</div></div></div>';
+  }
+
+  return '<div class="fc-wrap">'
+    +'<div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">'
+    +'<button class="btn btn-o btn-sm" onclick="FS.mode=\'home\';nav(\'flash\')">&#x2190; Deck</button>'
+    +'<div style="font-size:.8rem;color:var(--t3)">'+deckName+'</div></div>'
+    +'<div class="fc-nav">'
+    +'<div class="fc-counter">'+( FS.cardIdx+1)+' / '+total+'</div>'
+    +'<div class="fc-pbar"><div class="fc-pfill" style="width:'+pct+'%"></div></div>'
+    +'<div class="fc-counter">'+pct+'%</div></div>'
+    +cardHtml
+    +ratingHtml+'</div>';
+}
+
+function flipCard(){
+  FS.flipped=!FS.flipped;
+  document.getElementById('main').innerHTML=renderFlashStudy();
+}
+
+function rateCard(rating){
+  var isAll=FS.deckIdx===-1;
+  var item=FS.queue[FS.cardIdx];
+  var di=isAll?item.di:FS.deckIdx;
+  var ci=isAll?item.ci:item;
+  if(!FS.ratings[di]) FS.ratings[di]={};
+  FS.ratings[di][ci]=rating;
+  FS.studied++;
+  if(rating==='good') addXP(5);
+  else if(rating==='hard') addXP(2);
+
+  if(rating==='again'){
+    // Push to end of queue to review again
+    FS.queue.push(item);
+  }
+
+  FS.cardIdx++;
+  if(FS.cardIdx>=FS.queue.length){
+    FS.mode='result';
+    nav('flash');
+    return;
+  }
+  FS.flipped=false;
+  document.getElementById('main').innerHTML=renderFlashStudy();
+}
+
+function renderFlashResult(){
+  var isAll=FS.deckIdx===-1;
+  var total=isAll?Object.values(FS.ratings).reduce(function(a,r){return a+Object.keys(r).length;},0):Object.keys(FS.ratings[FS.deckIdx]||{}).length;
+  var allRatings=[];
+  if(isAll){Object.values(FS.ratings).forEach(function(r){allRatings=allRatings.concat(Object.values(r));});}
+  else allRatings=Object.values(FS.ratings[FS.deckIdx]||{});
+  var good=allRatings.filter(function(r){return r==='good';}).length;
+  var hard=allRatings.filter(function(r){return r==='hard';}).length;
+  var again=allRatings.filter(function(r){return r==='again';}).length;
+  var pct=total>0?Math.round(good/allRatings.length*100):0;
+  var icon=pct>=80?'&#x1F3C6;':pct>=60?'&#x1F4AA;':'&#x1F4DA;';
+  var msg=pct>=80?'Luar biasa! Penguasaan materi sangat baik.':pct>=60?'Bagus! Beberapa kartu perlu diulang.':'Terus berlatih! Ulangi kartu yang sulit.';
+  var deckName=isAll?'Semua Deck':DECKS[FS.deckIdx].title;
+  return '<div class="fc-wrap"><div class="fc-result">'
+    +'<div style="font-size:4rem;margin-bottom:16px">'+icon+'</div>'
+    +'<div class="fsyn" style="font-size:1.8rem;font-weight:800;color:var(--ac)">'+deckName+' Selesai!</div>'
+    +'<div style="color:var(--t2);margin:8px 0 28px;font-size:.9rem">'+msg+'</div>'
+    +'<div class="g3" style="max-width:400px;margin:0 auto 28px">'
+    +'<div class="sc cc"><div class="sv tg">'+good+'</div><div class="sl">Hafal &#x2705;</div></div>'
+    +'<div class="sc ca"><div class="sv ta">'+hard+'</div><div class="sl">Susah &#x1F914;</div></div>'
+    +'<div class="sc" style="border-color:rgba(239,68,68,.25);background:rgba(239,68,68,.05)"><div class="sv tr2" style="color:var(--rd)">'+again+'</div><div class="sl">Perlu Diulang &#x1F504;</div></div></div>'
+    +'<div style="font-size:1.4rem;font-weight:800;font-family:\'Syne\',sans-serif;color:var(--ac);margin-bottom:24px">'+pct+'% Hafal</div>'
+    +'<div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">'
+    +(FS.deckIdx>=0?'<button class="btn btn-p" onclick="startDeck('+FS.deckIdx+')">&#x1F504; Ulangi Deck</button>':'')
+    +'<button class="btn btn-s" onclick="FS.mode=\'home\';nav(\'flash\')">&#x1F3E0; Kembali ke Deck</button>'
+    +'<button class="btn btn-o" onclick="nav(\'modules\')">&#x1F4DA; Pelajari Materi</button></div></div></div>';
 }
 
 // ===== INIT =====

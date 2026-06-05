@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tax Academy 2026 — Active Tax Tutor</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0b0f;--bg2:#111318;--bg3:#181b22;--bg4:#1e222c;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.12);
+  --accent:#f59e0b;--accent2:#fbbf24;--accent3:#fde68a;
+  --blue:#3b82f6;--green:#10b981;--red:#ef4444;--purple:#8b5cf6;
+  --text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
+  --sw:240px;--th:60px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:14px}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden}
+#sidebar{position:fixed;left:0;top:0;bottom:0;width:var(--sw);background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;z-index:100;overflow-y:auto}
+.sb-logo{padding:20px 20px 16px;border-bottom:1px solid var(--border)}
+.sb-logo-title{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;color:var(--accent)}
+.sb-logo-sub{font-size:0.72rem;color:var(--text3);margin-top:2px;font-family:'DM Mono',monospace}
+.sb-xp{padding:14px 20px;border-bottom:1px solid var(--border)}
+.sb-xp-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.sb-level{font-family:'Syne',sans-serif;font-weight:700;font-size:0.85rem;color:var(--accent)}
+.sb-xp-val{font-size:0.75rem;color:var(--text3);font-family:'DM Mono',monospace}
+.xp-bar{background:var(--bg4);border-radius:4px;height:5px;overflow:hidden}
+.xp-fill{background:linear-gradient(90deg,var(--accent),var(--accent2));height:100%;border-radius:4px;transition:width 0.5s ease}
+.sb-streak{display:flex;align-items:center;gap:6px;margin-top:8px;font-size:0.75rem;color:var(--text2)}
+.sb-nav{padding:12px;flex:1}
+.sb-nav-label{font-size:0.65rem;font-family:'DM Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:1px;padding:8px 8px 4px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;cursor:pointer;font-size:0.85rem;color:var(--text2);transition:all 0.15s;margin-bottom:2px}
+.nav-item:hover{background:var(--bg3);color:var(--text)}
+.nav-item.active{background:rgba(245,158,11,0.12);color:var(--accent)}
+.nav-item svg{width:16px;height:16px;flex-shrink:0}
+.nav-badge{margin-left:auto;background:var(--accent);color:#000;font-size:0.65rem;font-weight:700;padding:1px 6px;border-radius:10px}
+#topbar{position:fixed;left:var(--sw);right:0;top:0;height:var(--th);background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 28px;gap:16px;z-index:90}
+.tb-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;flex:1}
+.tb-badge{background:var(--bg4);border:1px solid var(--border);border-radius:6px;padding:4px 10px;font-size:0.75rem;display:flex;align-items:center;gap:5px;color:var(--text2)}
+.tb-badge.lit{color:var(--accent);border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.08)}
+#main{margin-left:var(--sw);margin-top:var(--th);padding:28px;min-height:calc(100vh - var(--th))}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px}
+.card-sm{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px}
+.section-title{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:20px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.dash-hero{background:linear-gradient(135deg,rgba(245,158,11,0.12),rgba(59,130,246,0.08));border:1px solid rgba(245,158,11,0.2);border-radius:16px;padding:28px;margin-bottom:24px}
+.dash-hero-title{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800}
+.dash-hero-sub{color:var(--text2);font-size:0.9rem;margin-top:6px}
+.stat-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px}
+.stat-val{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800}
+.stat-lbl{font-size:0.75rem;color:var(--text3);margin-top:4px}
+.stat-card.ca{border-color:rgba(245,158,11,0.25);background:rgba(245,158,11,0.05)}.stat-card.ca .stat-val{color:var(--accent)}
+.stat-card.cb{border-color:rgba(59,130,246,0.25);background:rgba(59,130,246,0.05)}.stat-card.cb .stat-val{color:var(--blue)}
+.stat-card.cc{border-color:rgba(16,185,129,0.25);background:rgba(16,185,129,0.05)}.stat-card.cc .stat-val{color:var(--green)}
+.stat-card.cd{border-color:rgba(139,92,246,0.25);background:rgba(139,92,246,0.05)}.stat-card.cd .stat-val{color:var(--purple)}
+.mc{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;cursor:pointer;transition:all 0.2s;position:relative;overflow:hidden}
+.mc:hover{border-color:var(--border2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+.mc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.mc.c0::before{background:var(--accent)}.mc.c1::before{background:var(--blue)}.mc.c2::before{background:var(--green)}
+.mc.c3::before{background:var(--purple)}.mc.c4::before{background:#ec4899}.mc.c5::before{background:#f97316}
+.mc.c6::before{background:#06b6d4}.mc.c7::before{background:#84cc16}
+.mc-emoji{font-size:2rem;margin-bottom:12px}
+.mc-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:6px}
+.mc-desc{font-size:0.8rem;color:var(--text3);line-height:1.5}
+.mc-prog{margin-top:14px}
+.mc-bar{background:var(--bg4);border-radius:3px;height:4px;overflow:hidden;margin-top:6px}
+.mc-fill{height:100%;border-radius:3px;transition:width 0.4s ease}
+.mc.c0 .mc-fill{background:var(--accent)}.mc.c1 .mc-fill{background:var(--blue)}.mc.c2 .mc-fill{background:var(--green)}
+.mc.c3 .mc-fill{background:var(--purple)}.mc.c4 .mc-fill{background:#ec4899}.mc.c5 .mc-fill{background:#f97316}
+.mc.c6 .mc-fill{background:#06b6d4}.mc.c7 .mc-fill{background:#84cc16}
+.mc-meta{display:flex;justify-content:space-between;font-size:0.72rem;color:var(--text3)}
+.lw{max-width:780px}
+.bc{font-size:0.75rem;color:var(--text3);margin-bottom:10px;cursor:pointer}
+.bc span{color:var(--accent)}
+.ltabs{display:flex;gap:6px;margin-bottom:20px}
+.ltab{padding:6px 14px;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;border:1px solid var(--border);color:var(--text3);transition:all 0.15s}
+.ltab.active{background:var(--accent);color:#000;border-color:var(--accent)}
+.ltab.done{background:rgba(16,185,129,0.15);color:var(--green);border-color:rgba(16,185,129,0.3)}
+.lc{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:28px}
+.lc-tag{display:inline-block;background:rgba(245,158,11,0.15);color:var(--accent);font-size:0.7rem;font-weight:700;padding:3px 10px;border-radius:4px;font-family:'DM Mono',monospace;margin-bottom:14px;letter-spacing:0.5px}
+.lc-title{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:16px}
+.lc-body{font-size:0.88rem;line-height:1.75;color:var(--text2)}
+.lc-body h3{font-family:'Syne',sans-serif;color:var(--text);font-size:1rem;font-weight:700;margin:20px 0 10px}
+.abox{background:rgba(245,158,11,0.06);border:1px solid rgba(245,158,11,0.2);border-left:3px solid var(--accent);border-radius:8px;padding:14px 16px;margin:16px 0}
+.abox-lbl{font-size:0.7rem;font-weight:700;color:var(--accent);font-family:'DM Mono',monospace;letter-spacing:0.5px;margin-bottom:6px}
+.fbox{background:var(--bg4);border:1px solid var(--border2);border-radius:8px;padding:14px 16px;margin:16px 0;font-family:'DM Mono',monospace;font-size:0.85rem;color:var(--accent3);line-height:1.8}
+.wbox{background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.2);border-left:3px solid var(--red);border-radius:8px;padding:12px 14px;margin:14px 0;font-size:0.83rem}
+.ibox{background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.2);border-left:3px solid var(--blue);border-radius:8px;padding:12px 14px;margin:14px 0;font-size:0.83rem}
+.sbox{background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-left:3px solid var(--green);border-radius:8px;padding:12px 14px;margin:14px 0;font-size:0.83rem}
+table.tt{width:100%;border-collapse:collapse;margin:16px 0;font-size:0.82rem}
+table.tt th{background:var(--bg4);padding:9px 12px;text-align:left;font-weight:600;color:var(--text2);border-bottom:1px solid var(--border2);font-family:'DM Mono',monospace;font-size:0.75rem}
+table.tt td{padding:8px 12px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+table.tt tr:last-child td{border-bottom:none}
+table.tt .yes{color:var(--green);font-weight:600}
+table.tt .no{color:var(--red);font-weight:600}
+.qw{max-width:680px}
+.qq{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:700;margin-bottom:20px;line-height:1.5}
+.qopts{display:flex;flex-direction:column;gap:10px}
+.qopt{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;font-size:0.88rem;transition:all 0.15s;display:flex;align-items:flex-start;gap:12px}
+.qopt:hover{border-color:var(--border2);background:var(--bg4)}
+.qopt.sel{border-color:var(--accent);background:rgba(245,158,11,0.08);color:var(--accent)}
+.qopt.ok{border-color:var(--green);background:rgba(16,185,129,0.1);color:var(--green)}
+.qopt.ng{border-color:var(--red);background:rgba(239,68,68,0.08);color:var(--red)}
+.ql{width:22px;height:22px;border-radius:50%;background:var(--bg4);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;flex-shrink:0;font-family:'DM Mono',monospace}
+.qexp{margin-top:16px;padding:14px 16px;background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.2);border-radius:8px;font-size:0.84rem;color:var(--text2);line-height:1.6}
+.qexp.ng2{background:rgba(239,68,68,0.06);border-color:rgba(239,68,68,0.2)}
+.qprog{display:flex;gap:4px;margin-bottom:20px}
+.qpd{flex:1;height:4px;border-radius:2px;background:var(--bg4)}
+.qpd.done{background:var(--green)}.qpd.cur{background:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:8px;font-size:0.85rem;font-weight:600;cursor:pointer;border:none;transition:all 0.15s;font-family:'DM Sans',sans-serif}
+.btn-p{background:var(--accent);color:#000}.btn-p:hover{background:var(--accent2)}
+.btn-s{background:var(--bg3);color:var(--text);border:1px solid var(--border2)}.btn-s:hover{background:var(--bg4)}
+.btn-o{background:transparent;color:var(--text2);border:1px solid var(--border2)}.btn-o:hover{color:var(--text);background:var(--bg3)}
+.btn-sm{padding:7px 14px;font-size:0.8rem}
+.stabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px}
+.stab{padding:7px 14px;border-radius:7px;font-size:0.8rem;font-weight:600;cursor:pointer;border:1px solid var(--border);color:var(--text3);transition:all 0.15s}
+.stab.active{background:rgba(59,130,246,0.15);color:var(--blue);border-color:rgba(59,130,246,0.3)}
+.fg{margin-bottom:16px}
+.fl{font-size:0.78rem;font-weight:600;color:var(--text2);margin-bottom:6px;display:block}
+.fi{background:var(--bg3);border:1px solid var(--border2);border-radius:7px;padding:9px 12px;color:var(--text);font-size:0.88rem;font-family:'DM Sans',sans-serif;width:100%;outline:none;transition:border-color 0.15s}
+.fi:focus{border-color:var(--blue)}
+.fs{background:var(--bg3);border:1px solid var(--border2);border-radius:7px;padding:9px 12px;color:var(--text);font-size:0.88rem;font-family:'DM Sans',sans-serif;width:100%;outline:none;cursor:pointer}
+.rb{background:var(--bg4);border:1px solid var(--border2);border-radius:10px;padding:18px;margin-top:16px}
+.rr{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--border);font-size:0.85rem}
+.rr:last-child{border-bottom:none}
+.rr.tot{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;padding-top:10px;margin-top:4px}
+.rr .rv{font-family:'DM Mono',monospace;color:var(--accent)}
+.rr.tot .rv{font-size:1.1rem;color:var(--green)}
+.kbd{margin-bottom:20px;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.kbh{padding:16px 20px;background:var(--bg3);cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;transition:background 0.15s}
+.kbh:hover{background:var(--bg4)}
+.kbb{padding:20px;background:var(--bg2);display:none}
+.kbb.open{display:block}
+.kbb h4{font-family:'Syne',sans-serif;font-size:0.95rem;font-weight:700;color:var(--accent);margin:16px 0 8px}
+.kbb h5{font-size:0.85rem;font-weight:600;color:var(--text);margin:12px 0 6px}
+.kbb p{font-size:0.84rem;line-height:1.7;color:var(--text2);margin-bottom:8px}
+.kbb ul{padding-left:18px;margin-bottom:10px}
+.kbb li{font-size:0.83rem;color:var(--text2);line-height:1.65;margin-bottom:3px}
+.kbt{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.8rem}
+.kbt th{background:var(--bg4);padding:7px 10px;text-align:left;font-weight:600;color:var(--text3);border-bottom:1px solid var(--border);font-family:'DM Mono',monospace;font-size:0.72rem}
+.kbt td{padding:6px 10px;border-bottom:1px solid var(--border);color:var(--text2)}
+.kbt tr:last-child td{border-bottom:none}
+.ktag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:0.7rem;font-weight:700;font-family:'DM Mono',monospace;margin:2px}
+.ktag.law{background:rgba(59,130,246,0.15);color:var(--blue)}
+.ktag.new{background:rgba(16,185,129,0.15);color:var(--green)}
+.bgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
+.bc2{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:center;transition:all 0.2s}
+.bc2.earned{border-color:rgba(245,158,11,0.3);background:rgba(245,158,11,0.05)}
+.bc2:not(.earned){filter:grayscale(1);opacity:0.5}
+.bi{font-size:2.2rem;margin-bottom:8px}
+.bn{font-size:0.8rem;font-weight:600;margin-bottom:4px}
+.bd{font-size:0.7rem;color:var(--text3)}
+#toast{position:fixed;bottom:28px;right:28px;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:14px 18px;font-size:0.85rem;z-index:999;transform:translateY(80px);opacity:0;transition:all 0.3s;max-width:300px;box-shadow:0 8px 32px rgba(0,0,0,0.4)}
+#toast.show{transform:translateY(0);opacity:1}
+.chev{transition:transform 0.2s;display:inline-block}
+.chev.open{transform:rotate(180deg)}
+.fx{display:flex}.fxc{align-items:center}.fxb{justify-content:space-between}
+.mt4{margin-top:16px}.mt6{margin-top:24px}.mb4{margin-bottom:16px}.mb3{margin-bottom:12px}
+.ta{color:var(--accent)}.tg{color:var(--green)}.tb2{color:var(--blue)}.tr{color:var(--red)}.tm{color:var(--text3)}
+.tsm{font-size:0.8rem}.txs{font-size:0.72rem}.fb{font-weight:700}.fsyn{font-family:'Syne',sans-serif}.fmono{font-family:'DM Mono',monospace}
+</style>
+</head>
+<body>
+<aside id="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-title">⚡ Tax Academy</div>
+    <div class="sb-logo-sub">Active Tax Tutor 2026</div>
+  </div>
+  <div class="sb-xp">
+    <div class="sb-xp-row">
+      <span class="sb-level" id="sb-level">Level 1 — Pemula</span>
+      <span class="sb-xp-val" id="sb-xp-val">0 / 500 XP</span>
+    </div>
+    <div class="xp-bar"><div class="xp-fill" id="xp-fill" style="width:0%"></div></div>
+    <div class="sb-streak"><span>🔥</span> <span id="streak-val">1</span> hari streak</div>
+  </div>
+  <nav class="sb-nav">
+    <div class="sb-nav-label">Utama</div>
+    <div class="nav-item active" onclick="navigate('dashboard')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard
+    </div>
+    <div class="nav-item" onclick="navigate('modules')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>Modul Belajar
+    </div>
+    <div class="nav-item" onclick="navigate('quiz')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>Quiz Master<span class="nav-badge">20</span>
+    </div>
+    <div class="nav-item" onclick="navigate('simulator')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Simulator
+    </div>
+    <div class="sb-nav-label">Referensi</div>
+    <div class="nav-item" onclick="navigate('kb')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>Knowledge Base
+    </div>
+    <div class="nav-item" onclick="navigate('progress')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>Progress & Badge
+    </div>
+  </nav>
+</aside>
+<header id="topbar">
+  <div class="tb-title" id="tb-title">Dashboard</div>
+  <div style="display:flex;gap:8px">
+    <div class="tb-badge lit">⚡ Era Coretax</div>
+    <div class="tb-badge lit">📋 PP 20/2026</div>
+    <div class="tb-badge">🗓️ Pajak 2026</div>
+  </div>
+</header>
+<main id="main"></main>
+<div id="toast"></div>
+<script>
+<script>
+const LVL_NAMES=['Pemula','Dasar','Lanjut','Mahir','Expert','Master'];
+const LVL_XP=[0,500,1200,2200,3500,5000];
+let STATE={xp:0,level:1,streak:1,cm:{},quizScore:null};
+let LS={mi:0,li:0};
+let QS={active:false,qs:[],cur:0,score:0,answered:false,sel:null};
+let simTab=0;
+
+const MODS=[
+{title:'KUP & Coretax Dasar',emoji:'🔐',color:'c0',day:'Hari 1-2',
+ desc:'Integrasi NIK-NPWP, Akun Wajib Pajak, Pembukuan vs Pencatatan',
+ levels:[
+ {label:'Beginner',title:'NIK = NPWP Baru',tag:'KUP & CORETAX',
+  analogy:'Bayangkan NPWP lama seperti KTP biru fisik — perlu dicetak, bisa hilang. Sekarang NIK Anda otomatis jadi identitas pajak digital, seperti sidik jari yang tidak bisa dihilangkan.',
+  body:`<h3>Integrasi NIK sebagai NPWP</h3>
+<p>Berdasarkan <b>PENG-6/PJ.09/2024</b> dan <b>PMK 81/2024</b>:</p>
+<table class="tt"><tr><th>Jenis WP</th><th>Format NPWP</th></tr>
+<tr><td>WP OP Penduduk Indonesia</td><td>NIK (16 digit) ATAU NPWP 15 digit</td></tr>
+<tr><td>WP OP Bukan Penduduk</td><td>NPWP 15 digit</td></tr>
+<tr><td>WP Badan, Instansi Pemerintah</td><td>NPWP 15 digit</td></tr></table>
+<h3>Akun Wajib Pajak (AWP)</h3>
+<p>AWP adalah "inbox resmi" WP di portal Coretax. Semua surat DJP — SKP, SP2DK, keputusan — masuk ke sini. <b>Tanggal masuk ke AWP = tanggal resmi diterimanya dokumen.</b></p>`,
+  quiz:[{q:'Sejak kapan NIK dapat digunakan sebagai NPWP?',opts:['Sejak 2018','Sejak Januari 2024','Sejak 2025','Sejak UU HPP berlaku'],ans:1,exp:'Berdasarkan PENG-6/PJ.09/2024, format NPWP baru (NIK untuk WP OP penduduk) berlaku sejak Januari 2024.'}]},
+ {label:'Dasar',title:'SKP & Sanksi Terbaru',tag:'SURAT KETETAPAN PAJAK',
+  analogy:'SKP seperti "tagihan resmi" dari DJP. Ada berbagai jenis: tagihan biasa (STP), tagihan kurang bayar (SKPKB), sampai tagihan lebih bayar (SKPLB). Mirip seperti berbagai jenis nota dari toko.',
+  body:`<h3>Hierarki Produk Hukum Pajak</h3>
+<table class="tt"><tr><th>Kode</th><th>Nama</th><th>Fungsi</th></tr>
+<tr><td class="fmono ta">STP</td><td>Surat Tagihan Pajak</td><td>Tagih pajak + sanksi administratif</td></tr>
+<tr><td class="fmono ta">SKPKB</td><td>SKP Kurang Bayar</td><td>Pokok pajak + kredit + kekurangan + sanksi</td></tr>
+<tr><td class="fmono ta">SKPKBT</td><td>SKP KB Tambahan</td><td>Tambahan bila ada data baru</td></tr>
+<tr><td class="fmono ta">SKPN</td><td>SKP Nihil</td><td>Pokok = kredit pajak</td></tr>
+<tr><td class="fmono ta">SKPLB</td><td>SKP Lebih Bayar</td><td>Ada kelebihan pembayaran</td></tr></table>
+<h3>Sanksi Bunga SKPKB (UU HPP)</h3>
+<div class="fbox">Sanksi = (Suku Bunga Acuan + 20%) ÷ 12 × per bulan
+Maksimum: 24 bulan — TIDAK lagi flat 2%/bulan!</div>`,
+  quiz:[{q:'Berapa batas waktu DJP menerbitkan SKPKB setelah masa pajak berakhir?',opts:['1 tahun','3 tahun','5 tahun','10 tahun'],ans:2,exp:'Pasal 13 UU KUP: DJP berwenang menerbitkan SKPKB dalam jangka waktu 5 tahun.'}]},
+ {label:'Lanjut',title:'Keberatan & Banding',tag:'HUKUM ACARA PAJAK',
+  analogy:'Alur sengketa pajak seperti banding sepak bola: protes ke wasit dulu (Keberatan), kalau tidak puas naik ke komite disiplin (Banding ke Pengadilan Pajak), baru ke FIFA (PK di MA).',
+  body:`<h3>Alur Sengketa Pajak</h3>
+<div class="fbox">SPT → Pemeriksaan → SKPKB
+↓ KEBERATAN (3 bln sejak SKPKB) → SK Keberatan 12 bln
+↓ BANDING (3 bln sejak SK Keberatan) → Putusan
+↓ PENINJAUAN KEMBALI (Mahkamah Agung)</div>
+<div class="wbox">⚠️ <b>Syarat Banding:</b> WP wajib membayar 50% dari pajak terutang SKPKB sebagai syarat pengajuan banding.</div>
+<h3>Sanksi Bila Kalah</h3>
+<table class="tt"><tr><th>Tahap</th><th>Sanksi</th></tr>
+<tr><td>Keberatan ditolak, tidak banding</td><td>50% × (pajak SK Keberatan − yang dibayar)</td></tr>
+<tr><td>Banding ditolak</td><td>100% × (pajak Putusan Banding − yang dibayar)</td></tr></table>`,
+  quiz:[{q:'Berapa sanksi bila keberatan ditolak dan WP tidak mengajukan banding?',opts:['25%','50% dari selisih','100% pajak terutang','2%/bulan'],ans:1,exp:'Pasal 25(9) UU KUP: sanksi denda 50% dari pajak berdasarkan SK Keberatan dikurangi yang telah dibayar.'}]},
+ {label:'Expert',title:'SP2DK & Mitigasi Coretax',tag:'DATA ANALYTICS DJP',
+  analogy:'SP2DK adalah "early warning" DJP — seperti notifikasi dari bank saat ada transaksi mencurigakan. Lebih baik Anda yang proaktif rekonsiliasi daripada menunggu SP2DK yang berujung pemeriksaan.',
+  body:`<h3>Strategi Mitigasi SP2DK</h3>
+<table class="tt"><tr><th>Langkah</th><th>Tindakan</th></tr>
+<tr><td>1. Cek AWP rutin</td><td>Login Coretax minimal 2x/minggu</td></tr>
+<tr><td>2. Rekonsiliasi proaktif</td><td>SPT PPN vs PPh Badan tiap kuartal</td></tr>
+<tr><td>3. Tanggapi tepat waktu</td><td>Respons dalam <b>14 hari kerja</b> sejak diterima</td></tr>
+<tr><td>4. Jangan abaikan</td><td>Tidak direspons → Surat Perintah Pemeriksaan</td></tr></table>
+<div class="sbox">✅ Bila ada gap legitimate: ajukan <b>pembetulan SPT</b> sebelum berlanjut ke pemeriksaan — sanksi pembetulan lebih ringan dari sanksi SKPKB.</div>`,
+  quiz:[{q:'Berapa lama batas waktu respons SP2DK sejak diterima di AWP?',opts:['7 hari kalender','14 hari kerja','30 hari kalender','21 hari kerja'],ans:1,exp:'Prosedur SP2DK Coretax: WP wajib merespons dalam 14 hari kerja sejak SP2DK diterima di AWP.'}]}
+]},
+{title:'PPh 21 — Pemotongan Karyawan',emoji:'👤',color:'c1',day:'Hari 4-5',
+ desc:'Subjek, PTKP, TER, Gross Up, dan e-Bupot Unifikasi',
+ levels:[
+ {label:'Beginner',title:'Siapa Yang Dipotong PPh 21',tag:'PPh PASAL 21',
+  analogy:'PPh 21 seperti "iuran kas" yang dipotong dari gaji sebelum karyawan menerima. Yang mengumpulkan adalah pemberi kerja, dan langsung disetor ke DJP.',
+  body:`<h3>Subjek PPh 21 (PMK 168/2023)</h3>
+<ul><li>Pegawai Tetap</li><li>Penerima Pensiun</li><li>Pegawai Tidak Tetap / upah harian</li><li>Bukan Pegawai — jasa profesional (dokter, konsultan, artis)</li><li>Peserta Kegiatan — honorarium perlombaan/rapat</li></ul>
+<h3>Lapisan Tarif PPh OP (UU HPP)</h3>
+<table class="tt"><tr><th>Lapisan PKP</th><th>Tarif</th></tr>
+<tr><td>s/d Rp60 juta</td><td class="tg fb">5%</td></tr>
+<tr><td>Rp60 jt – Rp250 jt</td><td class="ta fb">15%</td></tr>
+<tr><td>Rp250 jt – Rp500 jt</td><td class="ta fb">25%</td></tr>
+<tr><td>Rp500 jt – Rp5 M</td><td class="tr fb">30%</td></tr>
+<tr><td>&gt; Rp5 M</td><td class="tr fb">35% ★ Baru UU HPP</td></tr></table>`,
+  quiz:[{q:'Berapa tarif PPh OP untuk PKP di atas Rp 5 miliar (UU HPP)?',opts:['30%','32%','35%','40%'],ans:2,exp:'UU HPP menambahkan lapisan tarif baru 35% untuk PKP di atas Rp 5 miliar.'}]},
+ {label:'Dasar',title:'PTKP & Penghitungan PKP',tag:'PTKP 2024-2026',
+  analogy:'PTKP adalah "jatah bebas pajak" — penghasilan yang tidak dikenai pajak. Mirip kuota data gratis: sampai kuota habis, tidak ada biaya. Selebihnya baru kena tarif.',
+  body:`<h3>Tabel PTKP Terkini</h3>
+<table class="tt"><tr><th>Status</th><th>PTKP/Tahun</th></tr>
+<tr><td>TK/0</td><td class="fmono ta">Rp54.000.000</td></tr>
+<tr><td>K/0</td><td class="fmono ta">Rp58.500.000</td></tr>
+<tr><td>K/1</td><td class="fmono ta">Rp63.000.000</td></tr>
+<tr><td>K/2</td><td class="fmono ta">Rp67.500.000</td></tr>
+<tr><td>K/3</td><td class="fmono ta">Rp72.000.000</td></tr></table>
+<div class="fbox">Dasar: Rp54 juta (WP sendiri)
++ Kawin: +Rp4,5 juta
++ Per tanggungan: +Rp4,5 juta (maks 3)</div>`,
+  quiz:[{q:'Berapa PTKP untuk status K/2?',opts:['Rp63.000.000','Rp67.500.000','Rp72.000.000','Rp58.500.000'],ans:1,exp:'K/2 = WP sendiri Rp54 juta + kawin Rp4,5 juta + 2 tanggungan Rp9 juta = Rp67,5 juta.'}]},
+ {label:'Lanjut',title:'TER — Tarif Efektif Rata-rata',tag:'PP 58/2023',
+  analogy:'TER seperti "diskon pajak pre-calculated" — DJP sudah menghitung tarif flat per bulan agar perusahaan tidak perlu rekonsiliasi tiap bulan. Baru di Desember dilakukan perhitungan sebenarnya.',
+  body:`<h3>3 Kategori TER (PP 58/2023)</h3>
+<table class="tt"><tr><th>Kategori</th><th>Status PTKP</th></tr>
+<tr><td>Kategori A</td><td>TK/0, TK/1</td></tr>
+<tr><td>Kategori B</td><td>K/0, K/1, TK/2, TK/3</td></tr>
+<tr><td>Kategori C</td><td>K/2, K/3</td></tr></table>
+<div class="fbox">Januari–November:
+PPh 21 = Tarif TER Bulanan × Penghasilan Bruto
+
+Desember (rekonsiliasi):
+PPh 21 Des = PPh terutang setahun (Ps.17) − Total Jan–Nov</div>`,
+  quiz:[{q:'Pada bulan apa sistem TER digunakan untuk pemotongan PPh 21?',opts:['Sepanjang tahun','Januari sampai November saja','Hanya bulan bonus','Triwulan pertama'],ans:1,exp:'TER digunakan Januari-November. Desember dihitung ulang menggunakan tarif Pasal 17 atas PKP setahun.'}]},
+ {label:'Expert',title:'Gross Up & e-Bupot Unifikasi',tag:'ADVANCED PPh 21',
+  analogy:'Gross Up seperti "menutup hutang pajak karyawan" oleh perusahaan — tapi legal dan justru menguntungkan perusahaan karena tunjangan tersebut jadi biaya deductible.',
+  body:`<h3>Manfaat Gross Up</h3>
+<div class="fbox">Lapisan 5%: Tunjangan Pajak = PKP × (5/95)
+✅ Tunjangan pajak = biaya deductible PPh Badan</div>
+<h3>e-Bupot Unifikasi di Coretax</h3>
+<p>Satu platform untuk melaporkan pemotongan: PPh 4(2), 15, 22, 23, 26.</p>
+<div class="sbox">✅ Data e-Bupot PPh 21 dari pemberi kerja dicocokkan otomatis dengan SPT Tahunan karyawan — ketidaksesuaian → SP2DK.</div>`,
+  quiz:[{q:'Apa keuntungan fiskal metode Gross Up bagi perusahaan pemberi kerja?',opts:['Tidak ada pajak','Tunjangan pajak jadi biaya deductible','Tarif karyawan turun','Tidak wajib e-Bupot'],ans:1,exp:'Tunjangan pajak dari Gross Up menjadi biaya deductible perusahaan, sehingga PPh Badan lebih kecil.'}]}
+]},
+{title:'PPh Final UMKM — PP 20/2026',emoji:'🏪',color:'c2',day:'Hari 7',
+ desc:'Rezim baru UMKM, penghapusan CV/PT biasa, aturan penggabungan omzet suami-istri',
+ levels:[
+ {label:'Beginner',title:'Siapa Boleh Pakai 0,5%?',tag:'PP 20/2026',
+  analogy:'PP 20/2026 seperti "list tamu undangan eksklusif" — tidak semua boleh masuk rezim 0,5%. CV dan PT biasa sudah dicoret dari daftar.',
+  body:`<h3>Subjek PPh Final 0,5%</h3>
+<table class="tt"><tr><th>Jenis WP</th><th>Boleh?</th><th>Syarat</th></tr>
+<tr><td>WP OP (bukan pekerjaan bebas)</td><td class="yes">✅ YA</td><td>Omzet ≤ Rp4,8 M</td></tr>
+<tr><td>PT Perorangan</td><td class="yes">✅ YA</td><td>Omzet gabungan ≤ Rp4,8 M</td></tr>
+<tr><td>Koperasi</td><td class="yes">✅ YA</td><td>Omzet ≤ Rp4,8 M</td></tr>
+<tr><td>CV</td><td class="no">❌ TIDAK</td><td>Transisi s/d akhir 2026 saja</td></tr>
+<tr><td>PT Biasa, Firma</td><td class="no">❌ TIDAK</td><td>Sejak PP 20/2026 berlaku</td></tr>
+<tr><td>WP OP Pekerjaan Bebas</td><td class="no">❌ TIDAK</td><td>Pasal 56(3)a</td></tr></table>`,
+  quiz:[{q:'Mulai kapan CV tidak bisa lagi menggunakan PPh Final 0,5%?',opts:['Langsung sejak PP terbit','Mulai Tahun Pajak 2027','Mulai 2025','Mulai 2030'],ans:1,exp:'CV hanya dapat menggunakan PPh Final s/d akhir 2026 (masa transisi). Mulai 2027, CV dikenai tarif PPh Badan normal.'}]},
+ {label:'Dasar',title:'Pekerjaan Bebas — Dikecualikan',tag:'PASAL 56(3) PP 20/2026',
+  analogy:'Konten kreator, notaris, dokter — meski omzetnya kecil, tidak bisa ikut tarif 0,5%. Bayangkan seperti dokter spesialis yang tidak bisa antri di poli umum — ada jalur tersendiri.',
+  body:`<h3>Penghasilan Dikecualikan dari PPh Final 0,5%</h3>
+<ul><li><b>a.</b> Jasa pekerjaan bebas (notaris, konsultan, dokter, konten kreator, dll.)</li>
+<li><b>b.</b> Penghasilan di luar negeri yang pajaknya sudah dibayar di LN</li>
+<li><b>c.</b> Penghasilan yang sudah dikenai PPh Final tersendiri</li>
+<li><b>d.</b> Penghasilan yang bukan objek pajak</li></ul>
+<div class="wbox">⚠️ <b>KASUS RIIL:</b> Tuan Budi — notaris (Rp2 M) + toko kelontong (Rp500 juta).<br>• Toko: ✅ BISA PPh Final 0,5% <br>• Notaris: ❌ TIDAK — pekerjaan bebas → tarif progresif</div>`,
+  quiz:[{q:'Seorang dokter dengan omzet Rp1 Miliar — apakah bisa PPh Final 0,5%?',opts:['Ya, omzet di bawah Rp4,8 M','Tidak, dokter termasuk pekerjaan bebas','Ya, jika mendaftar ke DJP','Tidak, harus PT Perorangan dulu'],ans:1,exp:'Pasal 56(3)a PP 20/2026: penghasilan dari jasa pekerjaan bebas (termasuk dokter) dikecualikan dari PPh Final 0,5%.'}]},
+ {label:'Lanjut',title:'Penggabungan Omzet Suami-Istri',tag:'PASAL 58(3) PP 20/2026',
+  analogy:'Rezim PPh Final seperti "kartu diskon keluarga" — bukan per individu, tapi per keluarga. DJP menggabungkan omzet suami, istri, dan semua PT Perorangan milik keduanya.',
+  body:`<h3>Pasal 58 Ayat (3) PP 20/2026</h3>
+<div class="fbox">Total = Omzet Suami + Omzet Istri
+  + Omzet semua PT Perorangan (suami DAN istri)
+Dibandingkan batas: Rp4,8 Miliar</div>
+<h3>Contoh Penggabungan</h3>
+<table class="tt"><tr><th>Pihak</th><th>Penghasilan</th></tr>
+<tr><td>Tuan A (notaris)</td><td class="fmono">Rp3 M</td></tr>
+<tr><td>PT Perorangan M (Tuan A)</td><td class="fmono">Rp1 M</td></tr>
+<tr><td>Nyonya Y (butik)</td><td class="fmono">Rp2 M</td></tr>
+<tr><td>PT Perorangan YS (Nyonya Y)</td><td class="fmono">Rp500 juta</td></tr>
+<tr><td><b>TOTAL</b></td><td class="fmono tr">Rp6,5 M &gt; Rp4,8 M ❌</td></tr></table>`,
+  quiz:[{q:'Dalam penggabungan omzet suami-istri (Pasal 58(3)), apa yang digabungkan?',opts:['Hanya WP OP suami dan istri','Omzet WP OP suami, istri, dan PT Perorangan milik keduanya','Hanya PT Perorangan yang didirikan bersama','Semua entitas termasuk PT Biasa'],ans:1,exp:'Pasal 58(3) PP 20/2026 menggabungkan omzet suami, istri, beserta seluruh PT Perorangan yang didirikan oleh suami dan istri.'}]},
+ {label:'Expert',title:'Tax Planning Pasca PP 20/2026',tag:'STRATEGI BADAN HUKUM',
+  analogy:'Memilih struktur badan hukum sekarang seperti memilih jalur tol — CV sudah ditutup 2027, jalan pintas 0,5% hanya tersedia untuk WP OP dan PT Perorangan di jalur yang benar.',
+  body:`<h3>Matrix Pemilihan Struktur Usaha</h3>
+<table class="tt"><tr><th>Jenis Usaha</th><th>Struktur</th><th>Rezim</th></tr>
+<tr><td>Omzet &lt; Rp4,8 M, bukan jasa bebas</td><td>WP OP / PT Perorangan</td><td class="tg">PPh Final 0,5%</td></tr>
+<tr><td>Jasa profesional</td><td>WP OP pekerjaan bebas</td><td>NPPN + Progresif</td></tr>
+<tr><td>Omzet Rp4,8 M – Rp50 M</td><td>PT Biasa</td><td>22% + Ps.31E</td></tr>
+<tr><td>Omzet &gt; Rp50 M</td><td>PT Biasa</td><td>PPh Badan 22%</td></tr></table>
+<div class="wbox">⚠️ Pemecahan usaha suami-istri untuk manipulasi batas Rp4,8 M sudah ditutup oleh Pasal 58(3). Potensi SKPKB + sanksi.</div>`,
+  quiz:[{q:'Untuk klien CV yang masih dalam masa PPh Final, apa yang harus dilakukan sebelum akhir 2026?',opts:['Tidak perlu apa-apa','Migrasi ke PT Perorangan atau PT Biasa','Bubarkan CV segera','Daftar ulang sebagai WP OP'],ans:1,exp:'CV harus dimigrasi ke struktur yang sesuai sebelum akhir 2026 karena mulai 2027 CV dikenai tarif PPh Badan normal.'}]}
+]},
+{title:'PPh Badan & Rekonsiliasi Fiskal',emoji:'🏢',color:'c3',day:'Hari 8',
+ desc:'Koreksi fiskal, Pasal 20A anti-mafia, dan perhitungan PPh Badan + Pasal 31E',
+ levels:[
+ {label:'Beginner',title:'Laba Komersial vs Laba Fiskal',tag:'PPh BADAN DASAR',
+  analogy:'Laba komersial untuk investor mengikuti PSAK/IFRS. Laba fiskal untuk DJP mengikuti aturan Pasal 6 & 9 UU PPh — ketat tentang biaya apa yang boleh dikurangi.',
+  body:`<div class="fbox">Laba Komersial = Pendapatan − Beban (PSAK/IFRS)
+Laba Fiskal = Penghasilan Bruto − Biaya 3M (UU PPh)
+
+Biaya 3M = biaya untuk Mendapatkan,
+             Menagih, Memelihara penghasilan</div>
+<p>Perbedaan laba komersial dan fiskal → perlu koreksi fiskal: positif (menambah PKP) atau negatif (mengurangi PKP).</p>`,
+  quiz:[{q:'Apa yang dimaksud "biaya 3M" dalam pajak penghasilan badan?',opts:['Marketing, Manajemen, Maintenance','Mendapatkan, Menagih, Memelihara penghasilan','Minimum, Maksimum, Menengah','Modal, Material, Manusia'],ans:1,exp:'Biaya 3M = biaya untuk Mendapatkan, Menagih, dan Memelihara penghasilan — boleh dikurangi dari penghasilan bruto.'}]},
+ {label:'Dasar',title:'Koreksi Fiskal Positif & Negatif',tag:'REKONSILIASI FISKAL',
+  analogy:'Koreksi positif seperti "menambah tagihan" karena perusahaan terlalu banyak klaim biaya. Koreksi negatif seperti "memberi diskon" karena ada penghasilan yang tidak kena pajak.',
+  body:`<h3>Koreksi Fiskal Positif (Menambah PKP)</h3>
+<ul><li>Biaya entertainment tanpa daftar nominatif</li>
+<li>Denda pajak & sanksi administrasi (Pasal 9(1)k)</li>
+<li>Penyusutan melebihi ketentuan fiskal</li>
+<li>Cadangan yang tidak diakui fiskal</li>
+<li><b>Biaya suap/gratifikasi → NON-DEDUCTIBLE (PASAL 20A)</b></li></ul>
+<h3>Koreksi Fiskal Negatif (Mengurangi PKP)</h3>
+<ul><li>Dividen dari perusahaan Indonesia (kepemilikan ≥ 25%) → bukan objek pajak</li>
+<li>Penghasilan sudah dikenai PPh Final → tidak digabung ke SPT Badan</li></ul>`,
+  quiz:[{q:'Denda keterlambatan pajak yang dibayar perusahaan — perlakuan fiskalnya?',opts:['Deductible karena biaya usaha','Non-deductible — koreksi fiskal positif (Pasal 9(1)k)','Deductible 50%','Tergantung jumlahnya'],ans:1,exp:'Pasal 9(1)k UU PPh: sanksi administrasi pajak tidak boleh dikurangkan dari penghasilan bruto.'}]},
+ {label:'Lanjut',title:'Pasal 20A — Anti-Mafia Clause',tag:'PASAL 20A BARU PP 20/2026',
+  analogy:'Pasal 20A menutup loophole — sebelumnya biaya suap bisa disamarkan sebagai entertainment dengan daftar nominatif. Sekarang, apapun bentuknya, kalau itu suap/gratifikasi — langsung non-deductible.',
+  body:`<h3>Pasal 20A UU PPh (disisipkan PP 20/2026)</h3>
+<div class="fbox">Pengeluaran berupa pemberian suap, gratifikasi,
+dan/atau pemberian lain (UU Tipikor + UU Anti-Suap),
+termasuk kepada pejabat publik asing:
+→ NON-DEDUCTIBLE — TIDAK ADA PENGECUALIAN</div>
+<table class="tt"><tr><th>Skenario</th><th>Perlakuan</th></tr>
+<tr><td>Biaya makan klien + daftar nominatif</td><td class="yes">Deductible ✅</td></tr>
+<tr><td>Uang pelicin untuk tender pemerintah</td><td class="no">NON-DEDUCTIBLE (Ps.20A) ❌</td></tr>
+<tr><td>Hadiah untuk pejabat publik asing</td><td class="no">NON-DEDUCTIBLE (Ps.20A) ❌</td></tr></table>
+<div class="ibox">ℹ️ Latar belakang: Indonesia dalam proses aksesi OECD. OECD mensyaratkan ketentuan eksplisit larangan deductibility biaya suap kepada pejabat publik asing.</div>`,
+  quiz:[{q:'Apa yang dimaksud Pasal 20A yang disisipkan melalui PP 20/2026?',opts:['Aturan deductibility biaya riset','Larangan biaya suap/gratifikasi sebagai pengurang penghasilan','Aturan tarif PPh Badan 20%','Ketentuan transfer pricing'],ans:1,exp:'Pasal 20A secara eksplisit melarang biaya suap, gratifikasi sesuai UU Tipikor sebagai pengurang penghasilan bruto — tanpa pengecualian.'}]},
+ {label:'Expert',title:'Tarif PPh Badan & Pasal 31E',tag:'TARIF & FASILITAS',
+  analogy:'Pasal 31E seperti "subsidi tarif" untuk UMKM yang tumbuh — porsi dari Rp4,8 M pertama dapat diskon 50% dari tarif normal.',
+  body:`<div class="fbox">Tarif umum PPh Badan: 22% (Pasal 17(1)b UU PPh)
+
+Fasilitas Pasal 31E (omzet ≤ Rp50 M):
+PKP dari omzet ≤ Rp4,8 M → tarif 11% (diskon 50%)
+PKP dari omzet > Rp4,8 M → tarif 22% normal
+
+Rumus: PKP Diskon = (Rp4,8M / Total Omzet) × PKP</div>
+<h3>Contoh: PT Maju Bersama (2026)</h3>
+<table class="tt"><tr><th>Item</th><th>Nilai</th></tr>
+<tr><td>PKP</td><td class="fmono">Rp3.195.000.000</td></tr>
+<tr><td>Omzet</td><td class="fmono">Rp25.000.000.000</td></tr>
+<tr><td>Porsi PKP Ps.31E</td><td class="fmono">Rp614.400.000</td></tr>
+<tr><td>PPh porsi 11%</td><td class="fmono tg">Rp67.584.000</td></tr>
+<tr><td>PPh porsi 22%</td><td class="fmono">Rp567.732.000</td></tr>
+<tr><td><b>TOTAL PPh Badan</b></td><td class="fmono ta">Rp635.316.000</td></tr></table>`,
+  quiz:[{q:'Dengan omzet Rp30 M dan PKP Rp3 M, berapa porsi PKP mendapat diskon Pasal 31E?',opts:['Rp3 M penuh','Rp480 juta','Rp4,8 M','Rp1,5 M'],ans:1,exp:'Porsi Pasal 31E = (Rp4,8M / Rp30M) × Rp3M = 16% × Rp3M = Rp480 juta.'}]}
+]},
+{title:'PPh Potput — Pasal 22 & 23',emoji:'✂️',color:'c4',day:'Hari 6',
+ desc:'PPh 22 impor, PPh 23 jasa, PMK 141/2015, dasar penentuan bruto',
+ levels:[
+ {label:'Beginner',title:'PPh Pasal 22 — Impor',tag:'PPh PASAL 22',
+  analogy:'PPh 22 seperti "cukai pajak di pintu masuk" — setiap barang impor dipajaki saat masuk ke bea cukai. Tidak punya API? Dendanya tiga kali lipat!',
+  body:`<h3>Tarif PPh 22 Impor</h3>
+<table class="tt"><tr><th>Kondisi</th><th>Tarif</th></tr>
+<tr><td>Menggunakan API</td><td class="tg fb">2,5%</td></tr>
+<tr><td>Tidak menggunakan API</td><td class="ta fb">7,5%</td></tr>
+<tr><td>Impor barang mewah tertentu</td><td class="tr fb">10%</td></tr>
+<tr><td>Tanpa NPWP</td><td class="tr fb">+100% dari tarif normal</td></tr></table>
+<div class="fbox">Dasar Pengenaan = Nilai Impor (CIF + Bea Masuk)
+PPh 22 = Tarif × Nilai Impor</div>`,
+  quiz:[{q:'Berapa tarif PPh 22 impor bagi importir tanpa API?',opts:['2,5%','5%','7,5%','10%'],ans:2,exp:'Importir tanpa API dikenai tarif 7,5% dari nilai impor (3x dari tarif API 2,5%).'}]},
+ {label:'Dasar',title:'PPh Pasal 23 — Jasa',tag:'PMK 141/2015',
+  analogy:'PPh 23 seperti "potongan komisi otomatis" — setiap pembayaran jasa ke pihak lain dipotong 2% sebelum sampai.',
+  body:`<div class="fbox">Tarif: 2% dari jumlah bruto
+Tanpa NPWP: 4% (lebih tinggi 100%)</div>
+<h3>Jasa Kena PPh 23 (PMK 141/2015)</h3>
+<ul><li>Jasa tenaga kerja/outsourcing</li><li>Jasa pembuatan/pemasangan iklan</li>
+<li>Jasa keagenan & maklon</li><li>Jasa katering/tata boga</li>
+<li>Jasa freight forwarding & logistik</li><li>Jasa pengelolaan parkir</li>
+<li>Jasa survey, sertifikasi, testing</li><li>Jasa pelatihan dan kursus</li></ul>`,
+  quiz:[{q:'Berapa tarif PPh 23 jasa bagi penerima tanpa NPWP?',opts:['2%','3%','4%','5%'],ans:2,exp:'Tanpa NPWP: tarif PPh 23 menjadi 4% (2% × 200%).'}]},
+ {label:'Lanjut',title:'Dasar Pemotongan PPh 23',tag:'PENENTUAN BRUTO',
+  analogy:'Menentukan "bruto" PPh 23 seperti menghitung tagihan kontraktor — kalau ada rincian yang jelas (material vs jasa), pajak hanya atas jasa bersihnya.',
+  body:`<div class="ibox">ℹ️ <b>Contoh (PMK 141/2015):</b><br>
+PT Jumbo kontrak iklan Rp255 juta (materi Rp100 jt + fee agen Rp5 jt + pasang iklan Rp150 jt).<br>
+• Ada faktur rinci → PPh 23 = 2% × Rp105 jt = <b>Rp2,1 juta</b><br>
+• Tidak ada rincian → PPh 23 = 2% × Rp255 jt = <b>Rp5,1 juta</b></div>
+<p>Aturan umum: bruto = seluruh tagihan (termasuk material). Pengecualian bila ada rincian terpisah material/gaji dengan bukti → PPh 23 hanya atas fee jasa bersih.</p>`,
+  quiz:[{q:'Tagihan jasa Rp200 juta dengan rincian jelas: material Rp120 juta + jasa Rp80 juta — berapa dasar PPh 23?',opts:['Rp200 juta','Rp80 juta','Rp120 juta','Rp160 juta'],ans:1,exp:'Bila ada rincian terpisah yang jelas, PPh 23 hanya dihitung atas fee jasa bersih (tidak termasuk material).'}]},
+ {label:'Expert',title:'e-Bupot Unifikasi & Coretax',tag:'ERA CORETAX',
+  analogy:'e-Bupot Unifikasi seperti "laporan pajak all-in-one" — daripada 5 laporan terpisah, sekarang satu portal terintegrasi.',
+  body:`<h3>Cakupan e-Bupot Unifikasi</h3>
+<p>PPh 4(2), 15, 22, 23, dan 26 dalam satu platform Coretax.</p>
+<div class="fbox">1. Login Coretax dengan AWP
+2. Buat bukti pemotongan per transaksi
+3. Input NPWP/NIK penerima, jenis penghasilan, tarif
+4. Generate bukti potong elektronik (TTD digital)
+5. SPT Masa terintegrasi otomatis dari data e-Bupot</div>
+<div class="wbox">⚠️ Data e-Bupot yang dilaporkan pemotong dicocokkan otomatis dengan SPT penerima. Ketidaksesuaian → SP2DK otomatis dari Coretax.</div>`,
+  quiz:[{q:'PPh pasal apa saja yang tercakup dalam e-Bupot Unifikasi?',opts:['PPh 21 dan 23','PPh 4(2), 15, 22, 23, dan 26','PPh 21, 22, dan 25','PPh 23 dan 26'],ans:1,exp:'e-Bupot Unifikasi menggabungkan PPh Pasal 4(2), 15, 22, 23, dan 26 dalam satu platform.'}]}
+]},
+{title:'PPN 12% — Mekanisme Dasar',emoji:'🧾',color:'c5',day:'Hari 9',
+ desc:'Tarif PPN 12%, mekanisme PM-PK, objek BKP/JKP, pengkreditan pajak masukan',
+ levels:[
+ {label:'Beginner',title:'Tarif PPN 12% Berlaku',tag:'PPN BERLAKU 1 JAN 2025',
+  analogy:'PPN seperti "bola salju nilai tambah" — setiap pedagang hanya membayar pajak atas nilai yang dia tambahkan, bukan atas harga jual penuh. Konsumen akhir menanggung total pajak.',
+  body:`<table class="tt"><tr><th>Periode</th><th>Tarif PPN</th></tr>
+<tr><td>1 April 2022 – 31 Desember 2024</td><td class="ta">11%</td></tr>
+<tr><td>Mulai 1 Januari 2025</td><td class="tr fb">12%</td></tr>
+<tr><td>Ekspor BKP/JKP</td><td class="tg">0%</td></tr></table>
+<div class="fbox">Pabrik jual ke Distributor Rp100 juta → PK = Rp12 juta
+PM Pabrik (bahan baku Rp60 juta) = Rp7,2 juta
+Setor = 12 − 7,2 = Rp4,8 juta</div>`,
+  quiz:[{q:'Sejak kapan tarif PPN 12% berlaku?',opts:['1 Apr 2022','1 Jan 2024','1 Jan 2025','1 Apr 2025'],ans:2,exp:'UU HPP: tarif PPN naik dari 11% menjadi 12% mulai 1 Januari 2025.'}]},
+ {label:'Dasar',title:'BKP & JKP — Objek PPN',tag:'OBJEK PPN',
+  analogy:'Prinsip BKP/JKP: semua kena pajak kecuali yang dikecualikan. Ini kebalikan dari PPh. Bila tidak ada di list pengecualian, otomatis kena PPN.',
+  body:`<h3>Bukan BKP (Dikecualikan)</h3>
+<ul><li>Hasil tambang langsung (minyak mentah, gas bumi, batu bara)</li>
+<li>Kebutuhan pokok: beras, jagung, sagu, kedelai, garam, daging, telur, susu, buah, sayuran</li>
+<li>Uang, emas batangan, surat berharga</li></ul>
+<h3>Bukan JKP (Dikecualikan)</h3>
+<ul><li>Jasa kesehatan medis & pelayanan sosial</li>
+<li>Jasa keuangan (perbankan, asuransi, pasar modal)</li>
+<li>Jasa pendidikan</li><li>Jasa tenaga kerja & perhotelan</li>
+<li>Jasa penyiaran non-iklan & angkutan umum</li></ul>`,
+  quiz:[{q:'Apakah jasa pendidikan sekolah swasta dikenakan PPN?',opts:['Ya, karena bukan milik pemerintah','Tidak, jasa pendidikan dikecualikan dari JKP','Ya, tarif 12%','Hanya perguruan tinggi dikecualikan'],ans:1,exp:'Jasa pendidikan termasuk Jasa Bukan JKP sesuai Pasal 4A UU PPN. Tidak ada PPN atas jasa pendidikan.'}]},
+ {label:'Lanjut',title:'Pengkreditan Pajak Masukan',tag:'PM-PK MECHANISM',
+  analogy:'Pengkreditan PM seperti "sistem kasbon yang bisa diklaim balik" — PPN yang sudah Anda bayar saat membeli bahan baku bisa di-offset dengan PPN yang Anda pungut dari pelanggan.',
+  body:`<div class="fbox">PPN Terutang per Masa:
+• PK > PM → Kurang bayar (setor ke negara)
+• PM > PK → Lebih bayar (restitusi/kompensasi)</div>
+<h3>PM yang TIDAK Dapat Dikreditkan (Pasal 9(8))</h3>
+<ul><li>Perolehan BKP/JKP sebelum dikukuhkan sebagai PKP</li>
+<li>BKP/JKP tidak berhubungan langsung dengan kegiatan usaha</li>
+<li><b>Faktur Pajak Cacat</b> — tidak memenuhi Pasal 13(5)</li>
+<li>BKP/JKP yang mendapat fasilitas <b>dibebaskan PPN</b></li></ul>`,
+  quiz:[{q:'PM atas Faktur Pajak Cacat — bagaimana perlakuannya?',opts:['Tetap bisa dikreditkan','Tidak dapat dikreditkan (Pasal 9(8)f)','Bisa dikreditkan setelah diperbaiki','Dapat dikreditkan 50%'],ans:1,exp:'Faktur Pajak Cacat (tidak memenuhi Pasal 13 ayat 5) menyebabkan PM pembeli tidak dapat dikreditkan.'}]},
+ {label:'Expert',title:'Tidak Dipungut vs Dibebaskan',tag:'FASILITAS PPN PASAL 16B',
+  analogy:'Tidak Dipungut = liburan pajak tapi tabungan PM-nya tetap ada. Dibebaskan = bebas pajak total, tapi PM yang sudah dibayar tidak bisa diklaim balik.',
+  body:`<table class="tt"><tr><th></th><th>Tidak Dipungut</th><th>Dibebaskan</th></tr>
+<tr><td>PPN terutang?</td><td>Ya, tidak dipungut</td><td>Tidak ada PPN</td></tr>
+<tr><td>PM dikreditkan?</td><td class="yes">✅ YA</td><td class="no">❌ TIDAK</td></tr></table>
+<div class="sbox">✅ PKP dengan fasilitas "Tidak Dipungut" justru menguntungkan — PM tetap dikreditkan → bisa restitusi. Berbeda dengan "Dibebaskan" di mana PM jadi beban biaya.</div>`,
+  quiz:[{q:'PKP dengan fasilitas PPN Dibebaskan — apakah PM bisa dikreditkan?',opts:['Ya, PM tetap bisa','Tidak, PM tidak dapat dikreditkan','Ya, hanya 50%','Tergantung jenis bahan baku'],ans:1,exp:'Untuk PPN Dibebaskan, PM tidak dapat dikreditkan dan menjadi beban biaya.'}]}
+]},
+{title:'PPN Pro — Faktur Pajak & TP',emoji:'📄',color:'c6',day:'Hari 10-11',
+ desc:'Faktur pajak elektronik, Faktur Cacat, Transfer Pricing, GAAR',
+ levels:[
+ {label:'Beginner',title:'Kewajiban Faktur Pajak',tag:'FAKTUR PAJAK ELEKTRONIK',
+  analogy:'Faktur Pajak seperti "kuitansi resmi negara" — setiap penyerahan BKP/JKP oleh PKP harus disertai faktur pajak yang sah. Tanpa itu, pembeli kehilangan hak kreditnya.',
+  body:`<h3>Syarat Faktur Pajak SAH (Pasal 13(5) UU PPN)</h3>
+<ul><li>Nama, alamat, NPWP PKP penjual</li>
+<li>Pembeli: nama, alamat, NPWP/NIK</li>
+<li>Jenis BKP/JKP, jumlah harga jual</li>
+<li>PPN yang dipungut</li>
+<li>Kode, nomor seri, tanggal Faktur Pajak</li>
+<li>Nama dan tanda tangan (bisa TTD elektronik di Coretax)</li></ul>
+<h3>Era Coretax</h3>
+<ul><li>Penomoran faktur <b>otomatis</b> dari sistem DJP</li>
+<li>Data real-time tersinkron dengan PKP pembeli</li></ul>`,
+  quiz:[{q:'Di era Coretax, bagaimana nomor seri Faktur Pajak diperoleh PKP?',opts:['Request manual ke KPP','Otomatis dari sistem DJP','Dibuat sendiri dengan kode KPP','Via email dari DJP'],ans:1,exp:'Di era Coretax, penomoran faktur pajak dilakukan otomatis oleh sistem DJP.'}]},
+ {label:'Dasar',title:'Faktur Pajak Cacat',tag:'KONSEKUENSI FATAL',
+  analogy:'Faktur Pajak Cacat seperti "SIM yang tidak sah" — ada denda untuk Anda (penjual) dan penumpang (pembeli) juga tidak bisa klaim asuransinya.',
+  body:`<div class="wbox">⚠️ <b>Bagi Pembeli:</b> PM tidak dapat dikreditkan (Pasal 9(8)f UU PPN)<br><br>
+⚠️ <b>Bagi Penjual:</b> STP + denda <b>1% dari DPP</b> (Pasal 14 UU KUP)</div>
+<div class="fbox">Denda Penjual = 1% × DPP
+PM Pembeli = TIDAK DAPAT DIKREDITKAN</div>`,
+  quiz:[{q:'Berapa denda penjual yang menerbitkan Faktur Pajak Cacat?',opts:['2% dari PPN','1% dari DPP','5% dari nilai transaksi','Rp500 ribu flat'],ans:1,exp:'Pasal 14 UU KUP: denda 1% dari Dasar Pengenaan Pajak atas Faktur Pajak Cacat.'}]},
+ {label:'Lanjut',title:'Transfer Pricing Dasar',tag:'PMK 172/2023',
+  analogy:'Transfer pricing seperti "harga dalam keluarga" — DJP bisa mengoreksi bila harga antar perusahaan dalam satu grup tidak sama dengan harga pasar bebas.',
+  body:`<h3>Hubungan Istimewa (Pasal 18(4) UU PPh)</h3>
+<ul><li>Kepemilikan/penyertaan modal ≥ 25%</li>
+<li>WP menguasai WP lain melalui manajemen/teknologi</li>
+<li>Hubungan keluarga sedarah/semenda satu derajat</li></ul>
+<h3>Metode Transfer Pricing</h3>
+<table class="tt"><tr><th>Metode</th><th>Aplikasi</th></tr>
+<tr><td>CUP</td><td>Harga identik di pasar terbuka</td></tr>
+<tr><td>CPM (Cost Plus)</td><td>Produsen: biaya + mark-up wajar</td></tr>
+<tr><td>RPM (Resale Price)</td><td>Distributor: harga jual − margin wajar</td></tr>
+<tr><td>TNMM</td><td>Paling umum; bandingkan margin neto</td></tr>
+<tr><td>PSM (Profit Split)</td><td>Transaksi terintegrasi kompleks</td></tr></table>`,
+  quiz:[{q:'Kapan WP diwajibkan membuat Country-by-Country Report (CbCR)?',opts:['Bila ada transaksi afiliasi','Omzet konsolidasi grup ≥ Rp11 triliun','Selalu wajib untuk PT Tbk','Ekspor melebihi Rp100 M'],ans:1,exp:'CbCR wajib untuk grup dengan omzet konsolidasi ≥ Rp11 triliun (PMK 172/2023).'}]},
+ {label:'Expert',title:'GAAR & Anti-Avoidance',tag:'ANTI TAX AVOIDANCE',
+  analogy:'GAAR seperti "polisi pajak" yang tidak hanya melihat bentuk transaksi tapi substansinya — apakah ini bisnis nyata atau hanya skema menghindari pajak?',
+  body:`<ul>
+<li><b>Substance over Form:</b> DJP dapat mengabaikan bentuk transaksi bila substansinya penghindaran pajak</li>
+<li><b>Thin Cap Rules (Pasal 18(1)):</b> Menkeu berwenang menentukan rasio utang-modal</li>
+<li><b>CFC Rules (Pasal 18(2)):</b> DJP dapat menetapkan saat dividen diterima dari perusahaan negara rendah pajak</li>
+<li><b>Anti Treaty Shopping:</b> P3B dapat ditolak bila terjadi treaty shopping</li>
+<li><b>Pasal 20A (SAAR):</b> Menutup celah biaya suap yang disamarkan</li></ul>
+<div class="wbox">⚠️ Risiko GAAR: transaksi yang sah secara hukum perdata dapat tetap dikoreaksi DJP bila tujuan utamanya adalah tax avoidance.</div>`,
+  quiz:[{q:'Apa yang dimaksud dengan prinsip "Substance over Form" dalam konteks GAAR?',opts:['Mengutamakan bentuk hukum transaksi','DJP dapat mengabaikan bentuk transaksi dan melihat substansi ekonomisnya','Menghitung pajak dari laba akuntansi','Mengikuti standar PSAK'],ans:1,exp:'Substance over Form: DJP dapat mengabaikan bentuk hukum transaksi dan menilai berdasarkan substansi ekonomisnya untuk mencegah penghindaran pajak.'}]}
+]},
+{title:'Studi Kasus Komprehensif',emoji:'🔍',color:'c7',day:'Hari 12',
+ desc:'PT Maju Bersama Grup — simulasi kasus nyata konsultan pajak',
+ levels:[
+ {label:'Beginner',title:'Profil Klien',tag:'STUDI KASUS HARI 12',
+  analogy:'Studi kasus ini seperti "ujian praktik SIM" — bukan hanya teori, tapi menghadapi skenario nyata yang mengkombinasikan semua materi.',
+  body:`<table class="tt"><tr><th>Entitas</th><th>Pemilik</th><th>Omzet</th></tr>
+<tr><td>PT Maju Bersama (alat bangunan)</td><td>Hendra 50%, Dewi 50%</td><td class="fmono">Rp25 M</td></tr>
+<tr><td>PT Perorangan HB</td><td>Tuan Hendra</td><td class="fmono">Rp1,5 M</td></tr>
+<tr><td>CV Dewi Jaya (distribusi cat)</td><td>Nyonya Dewi</td><td class="fmono">Rp2 M</td></tr></table>
+<h3>Data Keuangan PT Maju Bersama (2026)</h3>
+<ul><li>Omzet: Rp25 M | HPP: Rp18 M</li>
+<li>Biaya operasional: Rp4 M (termasuk Rp200 juta "biaya representasi", Rp80 juta diantaranya adalah gratifikasi)</li>
+<li>Laba komersial: Rp3 M</li></ul>`,
+  quiz:[{q:'PT Maju Bersama omzet Rp25 M — apakah berhak Pasal 31E?',opts:['Tidak, karena PT Biasa','Tidak, omzet terlalu besar','Ya, omzet ≤ Rp50 M','Ya, tapi diskon 25% saja'],ans:2,exp:'Fasilitas Pasal 31E untuk badan dengan omzet s/d Rp50 miliar. PT Maju Bersama Rp25 M memenuhi syarat.'}]},
+ {label:'Dasar',title:'Analisis PPh Final UMKM',tag:'SOAL 1 — PP 20/2026',
+  analogy:'Menganalisis apakah PT Perorangan HB dan CV Dewi Jaya masih bisa pakai 0,5% seperti mengecek "apakah keluarga ini masih masuk kriteria subsidi" — perlu hitung total omzet keluarga dulu.',
+  body:`<div class="fbox">Langkah 1 — Hitung omzet gabungan:
+PT Perorangan HB (Hendra) = Rp1,5 M
+CV Dewi Jaya (Dewi)       = Rp2 M
+Total Gabungan = Rp3,5 M (&lt; Rp4,8 M) ✅
+
+Langkah 2 — Status:
+• PT Perorangan HB: ✅ MASIH BISA PPh Final 2027
+• CV Dewi Jaya: ❌ TIDAK BISA — CV dicoret PP 20/2026</div>
+<div class="sbox">✅ Walaupun total omzet di bawah Rp4,8 M, CV Dewi Jaya tetap tidak bisa karena bentuk badan usaha CV sudah tidak diizinkan — bukan soal omzet.</div>`,
+  quiz:[{q:'Mengapa CV Dewi Jaya tidak bisa PPh Final 0,5% mulai 2027 meski omzet kecil?',opts:['Omzet melewati Rp4,8 M','Bentuk CV sudah dihapus dari daftar subjek PP 20/2026','Istri tidak bisa punya badan usaha sendiri','CV tidak terdaftar sebagai PKP'],ans:1,exp:'PP 20/2026 secara eksplisit menghapus CV dari daftar subjek PPh Final 0,5%, terlepas dari besarnya omzet.'}]},
+ {label:'Lanjut',title:'Rekonsiliasi Fiskal',tag:'SOAL 2 — PPh BADAN',
+  analogy:'Rekonsiliasi fiskal ini seperti "audit ulang" laporan keuangan komersial — menemukan perbedaan antara yang dicatat akuntan dan yang diizinkan DJP.',
+  body:`<table class="tt"><tr><th>Item</th><th>Nilai</th></tr>
+<tr><td>Laba Komersial</td><td class="fmono">Rp3.000.000.000</td></tr>
+<tr><td>+ Biaya gratifikasi (Pasal 20A)</td><td class="fmono tr">+Rp80.000.000</td></tr>
+<tr><td>+ Denda pajak (Ps.9(1)k)</td><td class="fmono tr">+Rp15.000.000</td></tr>
+<tr><td>+ Selisih penyusutan</td><td class="fmono tr">+Rp100.000.000</td></tr>
+<tr><td><b>PKP</b></td><td class="fmono ta fb">Rp3.195.000.000</td></tr></table>
+<div class="fbox">Porsi PKP Ps.31E: (4,8M/25M) × 3,195M = Rp614,4 juta
+PPh diskon (11%): Rp67.584.000
+PPh normal (22%): Rp567.732.000
+TOTAL PPh Badan: Rp635.316.000</div>`,
+  quiz:[{q:'Dari Rp200 juta "biaya representasi", yang Rp80 juta adalah gratifikasi. Berapa yang NON-DEDUCTIBLE?',opts:['Rp200 juta semuanya','Rp80 juta (hanya bagian gratifikasi)','Rp120 juta','Semuanya deductible'],ans:1,exp:'Hanya Rp80 juta yang terbukti gratifikasi yang dikoreksi positif berdasarkan Pasal 20A.'}]},
+ {label:'Expert',title:'Audit Coretax & SP2DK',tag:'SOAL 3 & 4',
+  analogy:'Menerima SP2DK di era Coretax seperti mendapat "notifikasi merah dari bank" — sistem otomatis mendeteksi gap. Respons yang tepat dan cepat adalah kunci menghindari pemeriksaan formal.',
+  body:`<h3>Skenario SP2DK (Soal 3)</h3>
+<p>DJP kirim SP2DK via AWP — gap PPN Rp300 juta antara SPT PT Maju Bersama dan data e-faktur pembeli.</p>
+<div class="fbox">Strategi Mitigasi:
+1. Cek AWP segera (hitung 14 hari kerja)
+2. Rekonsiliasi: cek perbedaan masa/retur/salah input
+3. Siapkan dokumen: buku besar, faktur, nota retur
+4. Jika gap legitimate → jawab tertulis + dokumen
+5. Jika ada kesalahan → ajukan PEMBETULAN SPT</div>
+<h3>PPh 21 Direktur (Soal 4)</h3>
+<p>Tuan Hendra, gaji Rp50 juta/bulan, K/2: Status K/2 → TER Kategori B. Tarif TER ≈15%. PPh/bln Jan-Nov = ±Rp7,5 juta. Desember: rekonsiliasi Pasal 17.</p>`,
+  quiz:[{q:'Bila SP2DK tidak ditanggapi WP, apa langkah berikutnya DJP?',opts:['Langsung terbit SKPKB','Surat Perintah Pemeriksaan → Pemeriksaan formal','Memblokir rekening WP','Perpanjangan waktu otomatis'],ans:1,exp:'SP2DK tidak direspons dalam 14 hari kerja → DJP menerbitkan Surat Perintah Pemeriksaan yang mengarah pada pemeriksaan formal.'}]}
+]}
+];
+const QUIZ=[
+  {q:'Apa kepanjangan dari AWP dalam konteks Coretax?',opts:['Akun Wajib Perpajakan','Akun Wajib Pajak','Aplikasi Wajib Pajak','Akses Wajib Pajak'],ans:1,topic:'Coretax'},
+  {q:'Berapa lama dokumen pembukuan harus disimpan sesuai Pasal 28 UU KUP?',opts:['5 tahun','7 tahun','10 tahun','15 tahun'],ans:2,topic:'KUP'},
+  {q:'Bila NIK WP belum diintegrasikan, berapa persentase tarif lebih tinggi PPh 21?',opts:['10%','20%','50%','100%'],ans:1,topic:'NIK-NPWP'},
+  {q:'Metode apa yang paling umum digunakan dalam transfer pricing?',opts:['CUP','CPM','TNMM','PSM'],ans:2,topic:'Transfer Pricing'},
+  {q:'Nota Retur diterbitkan oleh siapa?',opts:['PKP Penjual','PKP Pembeli BKP','DJP','Bea Cukai'],ans:1,topic:'PPN'},
+  {q:'Berapa tarif PPh 22 impor untuk importir yang menggunakan API?',opts:['2%','2,5%','5%','7,5%'],ans:1,topic:'PPh 22'},
+  {q:'Apa itu TER Kategori C dalam PP 58/2023?',opts:['PTKP TK/0','PTKP K/0 dan K/1','PTKP K/2 dan K/3','PTKP TK/2 dan TK/3'],ans:2,topic:'TER PPh 21'},
+  {q:'Berapa batas omzet untuk menggunakan PPh Final 0,5% (PP 20/2026)?',opts:['Rp600 juta','Rp1 miliar','Rp4,8 miliar','Rp10 miliar'],ans:2,topic:'PP 20/2026'},
+  {q:'Denda apa yang dikenakan bila keberatan ditolak dan WP tidak banding?',opts:['25% dari pajak','50% dari selisih','75% dari pajak','100% dari selisih'],ans:1,topic:'Keberatan'},
+  {q:'Sejak kapan tarif PPN 12% berlaku?',opts:['1 Jan 2023','1 Apr 2024','1 Jan 2025','1 Apr 2025'],ans:2,topic:'PPN'},
+  {q:'Berapa tarif PPh Badan umum sesuai UU HPP?',opts:['20%','22%','25%','28%'],ans:1,topic:'PPh Badan'},
+  {q:'Koreksi fiskal negatif berarti?',opts:['Menambah PKP karena biaya tidak boleh dikurang','Mengurangi PKP karena penghasilan bukan objek pajak','Menambah biaya komersial','Mengurangi pendapatan komersial'],ans:1,topic:'Rekonsiliasi'},
+  {q:'Berapa PTKP per tahun untuk WP dengan status TK/0?',opts:['Rp48 juta','Rp54 juta','Rp58,5 juta','Rp63 juta'],ans:1,topic:'PTKP'},
+  {q:'Koperasi dengan omzet Rp3 miliar — bolehkah memakai PPh Final 0,5%?',opts:['Ya','Tidak, hanya WP OP','Tidak, hanya PT Perorangan','Tidak, koperasi tidak termasuk'],ans:0,topic:'PP 20/2026'},
+  {q:'Tarif PPh OP tertinggi berdasarkan UU HPP adalah?',opts:['30%','32%','35%','40%'],ans:2,topic:'Tarif PPh'},
+  {q:'PM yang belum dikreditkan dapat dikreditkan paling lama berapa masa pajak berikutnya?',opts:['1 masa','2 masa','3 masa','6 masa'],ans:2,topic:'PPN'},
+  {q:'Tarif PPh 23 jasa untuk penyedia tanpa NPWP?',opts:['2%','3%','4%','5%'],ans:2,topic:'PPh 23'},
+  {q:'Berapa persentase kepemilikan yang menunjukkan hubungan istimewa (Pasal 18(4) UU PPh)?',opts:['10%','20%','25%','50%'],ans:2,topic:'Transfer Pricing'},
+  {q:'Berapa denda penjual atas Faktur Pajak Cacat?',opts:['0,5% DPP','1% DPP','2% DPP','5% DPP'],ans:1,topic:'Faktur Pajak'},
+  {q:'Pasal 20A disisipkan ke UU PPh melalui peraturan apa?',opts:['UU HPP','PMK 81/2024','PP 20/2026','PP 58/2023'],ans:2,topic:'Anti-Mafia'}
+];
+
+function navigate(page){
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  const map={dashboard:0,modules:1,quiz:2,simulator:3,kb:4,progress:5};
+  const navs=document.querySelectorAll('.nav-item');
+  if(map[page]!==undefined)navs[map[page]]?.classList.add('active');
+  document.getElementById('tb-title').textContent={dashboard:'Dashboard',modules:'Modul Belajar',quiz:'Quiz Master',simulator:'Simulator Pajak',kb:'Knowledge Base',progress:'Progress & Badge',lesson:'Materi Pembelajaran'}[page]||'Tax Academy';
+  const m=document.getElementById('main');
+  if(page==='dashboard')m.innerHTML=renderDash();
+  else if(page==='modules')m.innerHTML=renderMods();
+  else if(page==='quiz')m.innerHTML=renderQuizPage();
+  else if(page==='simulator')m.innerHTML=renderSim();
+  else if(page==='kb')m.innerHTML=renderKB();
+  else if(page==='progress')m.innerHTML=renderProgress();
+  else if(page==='lesson')m.innerHTML=renderLesson();
+  updateSB();
+}
+
+function updateSB(){
+  const xpN=LVL_XP[STATE.level]||5000;
+  const xpP=LVL_XP[STATE.level-1]||0;
+  const pct=Math.min(100,((STATE.xp-xpP)/(xpN-xpP))*100);
+  document.getElementById('xp-fill').style.width=pct+'%';
+  document.getElementById('sb-xp-val').textContent=STATE.xp+' / '+xpN+' XP';
+  document.getElementById('sb-level').textContent='Level '+STATE.level+' — '+(LVL_NAMES[STATE.level-1]||'Expert');
+  document.getElementById('streak-val').textContent=STATE.streak;
+}
+
+function addXP(n){
+  STATE.xp+=n;
+  const needed=LVL_XP[STATE.level]||5000;
+  if(STATE.xp>=needed&&STATE.level<6){STATE.level++;showToast('🎉 Level Up! Level '+STATE.level+' — '+(LVL_NAMES[STATE.level-1]||'Expert'),'success');}
+  updateSB();
+}
+
+function showToast(msg,type='info'){
+  const t=document.getElementById('toast');
+  t.innerHTML=msg;
+  t.style.borderColor=type==='success'?'rgba(16,185,129,0.3)':type==='warn'?'rgba(245,158,11,0.3)':'var(--border2)';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+function renderDash(){
+  const dl=Object.values(STATE.cm).reduce((a,v)=>a+(v?v.length:0),0);
+  const tl=MODS.length*4;
+  const cc=Object.values(STATE.cm).filter(v=>v&&v.length>=4).length;
+  return`<div class="dash-hero">
+  <div class="dash-hero-title">Selamat Belajar, Konsultan Pajak! 👋</div>
+  <div class="dash-hero-sub">Era Coretax · PP 20/2026 · PPN 12% — Kuasai regulasi perpajakan terbaru 2026</div>
+  <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap">
+    <button class="btn btn-p" onclick="navigate('modules')">📚 Mulai Belajar</button>
+    <button class="btn btn-s" onclick="navigate('quiz')">🎯 Quiz Master</button>
+    <button class="btn btn-o" onclick="navigate('simulator')">🧮 Simulator</button>
+  </div></div>
+<div class="g4 mb4">
+  <div class="stat-card ca"><div class="stat-val">${STATE.xp}</div><div class="stat-lbl">Total XP</div></div>
+  <div class="stat-card cb"><div class="stat-val">${dl}/${tl}</div><div class="stat-lbl">Level Selesai</div></div>
+  <div class="stat-card cc"><div class="stat-val">${cc}/${MODS.length}</div><div class="stat-lbl">Modul Tuntas</div></div>
+  <div class="stat-card cd"><div class="stat-val">${STATE.streak}</div><div class="stat-lbl">Hari Streak 🔥</div></div>
+</div>
+<div class="section-title">Lanjutkan Belajar</div>
+<div class="g4">
+${MODS.slice(0,4).map((m,i)=>{const d=STATE.cm[i]||[];const p=(d.length/4)*100;return`<div class="mc ${m.color}" onclick="openLesson(${i},${d.length<4?d.length:0})">
+  <div class="mc-emoji">${m.emoji}</div>
+  <div class="mc-title">${m.title}</div>
+  <div class="mc-desc">${m.desc.substring(0,60)}...</div>
+  <div class="mc-prog"><div class="mc-meta"><span>${d.length}/4 level</span><span>${Math.round(p)}%</span></div>
+  <div class="mc-bar"><div class="mc-fill" style="width:${p}%"></div></div></div>
+</div>`;}).join('')}
+</div>
+<div style="margin-top:16px;text-align:right"><button class="btn btn-o btn-sm" onclick="navigate('modules')">Lihat Semua Modul →</button></div>
+<div class="mt6 section-title">Regulasi Kunci 2026</div>
+<div class="g3">
+${[['PP 20/2026','Rezim baru PPh Final UMKM, Pasal 20A anti-suap, penggabungan omzet suami-istri'],
+['PMK 81/2024','Kitab Hukum Coretax: AWP, pendaftaran WP, PKP, tata cara digital'],
+['PPN 12%','Tarif PPN naik menjadi 12% mulai 1 Januari 2025 (UU HPP)'],
+['PP 58/2023','TER PPh 21 — 3 kategori (A, B, C) untuk pemotongan bulanan'],
+['PMK 168/2023','Petunjuk teknis pemotongan PPh 21/26 terbaru'],
+['PMK 141/2015','Daftar lengkap jasa yang dipotong PPh 23 tarif 2%']
+].map(([t,d])=>`<div class="card-sm"><div class="ktag law" style="margin-bottom:8px">${t}</div><div style="font-size:0.82rem;color:var(--text2);line-height:1.5">${d}</div></div>`).join('')}
+</div>`;
+}
+
+function renderMods(){
+  return`<div class="section-title">Modul Pembelajaran</div><div class="g4">
+${MODS.map((m,i)=>{const d=STATE.cm[i]||[];const p=(d.length/4)*100;return`<div class="mc ${m.color}" onclick="openLesson(${i},0)">
+  <div class="mc-emoji">${m.emoji}</div>
+  <div style="font-size:0.7rem;font-family:'DM Mono',monospace;color:var(--text3);margin-bottom:6px">${m.day}</div>
+  <div class="mc-title">${m.title}</div>
+  <div class="mc-desc">${m.desc}</div>
+  <div class="mc-prog"><div class="mc-meta"><span>${d.length}/4 level</span><span class="${p===100?'tg':''}">${p===100?'✅ Tuntas':Math.round(p)+'%'}</span></div>
+  <div class="mc-bar"><div class="mc-fill" style="width:${p}%"></div></div></div>
+</div>`;}).join('')}</div>`;
+}
+
+function openLesson(mi,li){LS={mi,li};navigate('lesson');}
+
+function renderLesson(){
+  const m=MODS[LS.mi];const lv=m.levels[LS.li];const d=STATE.cm[LS.mi]||[];
+  return`<div class="lw">
+  <div class="bc" onclick="navigate('modules')">← Kembali ke <span>Modul</span></div>
+  <div style="font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:12px">${m.emoji} ${m.title}</div>
+  <div class="ltabs">${m.levels.map((l,i)=>`<div class="ltab ${d.includes(i)?'done':''} ${i===LS.li?'active':''}" onclick="switchLv(${i})">${l.label}</div>`).join('')}</div>
+  <div class="lc">
+    <div class="lc-tag">${lv.tag}</div>
+    <div class="lc-title">${lv.title}</div>
+    <div class="abox"><div class="abox-lbl">💡 ANALOGI</div>${lv.analogy}</div>
+    <div class="lc-body">${lv.body}</div>
+  </div>
+  <div style="margin-top:24px">
+    <div class="section-title" style="font-size:1rem;margin-bottom:14px">🎯 Quiz Level Ini</div>
+    <div id="lqw">${renderLQ(lv.quiz[0],false,null)}</div>
+  </div>
+  <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
+    ${LS.li>0?`<button class="btn btn-o" onclick="switchLv(${LS.li-1})">← Level Sebelumnya</button>`:''}
+    ${LS.li<m.levels.length-1?`<button class="btn btn-s" onclick="switchLv(${LS.li+1})">Level Berikutnya →</button>`:''}
+    <button class="btn btn-p" onclick="finishLv()">✅ Tandai Selesai & +50 XP</button>
+  </div>
+</div>`;
+}
+
+function renderLQ(q,answered,sel){
+  const L=['A','B','C','D'];
+  return`<div class="qw"><div class="qq">${q.q}</div><div class="qopts">
+${q.opts.map((o,i)=>{let c='';if(answered){if(i===q.ans)c='ok';else if(i===sel)c='ng';}
+return`<div class="qopt ${c}" onclick="answerLQ(${i})"><span class="ql">${L[i]}</span><span>${o}</span></div>`;}).join('')}
+</div>${answered?`<div class="qexp ${sel!==q.ans?'ng2':''}">${sel===q.ans?'✅ Benar!':'❌ Salah!'} ${q.exp}</div>`:''}</div>`;
+}
+
+function answerLQ(i){
+  const q=MODS[LS.mi].levels[LS.li].quiz[0];
+  const ok=i===q.ans;
+  if(ok){addXP(20);showToast('⚡ Benar! +20 XP','success');}else showToast('❌ Salah. '+q.exp.substring(0,60)+'...','warn');
+  document.getElementById('lqw').innerHTML=renderLQ(q,true,i);
+}
+
+function switchLv(i){LS.li=i;navigate('lesson');}
+
+function finishLv(){
+  const mi=LS.mi,li=LS.li;
+  if(!STATE.cm[mi])STATE.cm[mi]=[];
+  if(!STATE.cm[mi].includes(li)){STATE.cm[mi].push(li);addXP(50);showToast('🏆 Level selesai! +50 XP','success');}
+  else showToast('Sudah selesai level ini','info');
+  navigate('lesson');
+}
+
+function renderQuizPage(){
+  if(!QS.active)return`<div class="qw">
+  <div class="section-title">🎯 Quiz Master — 20 Soal</div>
+  <div class="card mb4">
+    <p style="color:var(--text2);font-size:0.88rem;line-height:1.7;margin-bottom:16px">Uji pemahaman Anda dengan 20 soal acak dari semua materi modul. Topik mencakup: KUP, Coretax, PPh 21, PPh Badan, PPN, PP 20/2026, Transfer Pricing, dan lebih banyak lagi.</p>
+    ${STATE.quizScore!==null?`<div class="sbox mb3">📊 Skor terakhir: <b>${STATE.quizScore}/20</b> (${Math.round(STATE.quizScore/20*100)}%)</div>`:''}
+    <button class="btn btn-p" onclick="startQuiz()">🚀 Mulai Quiz</button>
+  </div>
+  <div class="section-title" style="font-size:1rem">Topik yang Diuji</div>
+  <div class="g4">${['KUP & Coretax','NIK-NPWP','PPh 21 & TER','PTKP & PKP','PPh Final 0,5%','PP 20/2026','PPh Badan','Rekonsiliasi Fiskal','PPN 12%','BKP & JKP','Faktur Pajak','PPh 22 & 23','Transfer Pricing','Anti-Mafia Ps.20A','GAAR','Keberatan & Banding'].map(t=>`<div class="card-sm" style="font-size:0.78rem;color:var(--text2);padding:10px 12px">${t}</div>`).join('')}
+  </div></div>`;
+  const q=QS.qs[QS.cur];const L=['A','B','C','D'];
+  return`<div class="qw">
+  <div class="fx fxb fxc mb3"><div class="tsm tm">Soal ${QS.cur+1}/${QS.qs.length}</div><div class="tsm ta">Skor: ${QS.score}</div></div>
+  <div class="qprog">${QS.qs.map((_,i)=>`<div class="qpd ${i<QS.cur?'done':i===QS.cur?'cur':''}"></div>`).join('')}</div>
+  <div class="card mb4">
+    <div class="txs tm fmono mb3">${q.topic}</div>
+    <div class="qq">${q.q}</div>
+    <div class="qopts">${q.opts.map((o,i)=>{let c='';if(QS.answered){if(i===q.ans)c='ok';else if(i===QS.sel)c='ng';}return`<div class="qopt ${c}" onclick="answerQ(${i})"><span class="ql">${L[i]}</span><span>${o}</span></div>`;}).join('')}</div>
+    ${QS.answered?`<div class="qexp ${QS.sel!==q.ans?'ng2':''}">${QS.sel===q.ans?'✅ Benar!':'❌ Kurang tepat!'} ${q.exp}</div>`:''}
+  </div>
+  ${QS.answered?`<button class="btn btn-p" onclick="nextQ()">${QS.cur<QS.qs.length-1?'Soal Berikutnya →':'Lihat Hasil 🏆'}</button>`:''}
+  </div>`;
+}
+
+function startQuiz(){
+  QS={active:true,qs:[...QUIZ].sort(()=>Math.random()-0.5).slice(0,20),cur:0,score:0,answered:false,sel:null};
+  document.getElementById('main').innerHTML=renderQuizPage();
+}
+
+function answerQ(i){
+  if(QS.answered)return;
+  const q=QS.qs[QS.cur];QS.answered=true;QS.sel=i;
+  if(i===q.ans){QS.score++;addXP(10);}
+  document.getElementById('main').innerHTML=renderQuizPage();
+}
+
+function nextQ(){
+  if(QS.cur<QS.qs.length-1){QS.cur++;QS.answered=false;QS.sel=null;document.getElementById('main').innerHTML=renderQuizPage();}
+  else{
+    const sc=QS.score,tot=QS.qs.length;STATE.quizScore=sc;QS.active=false;
+    if(sc>=18)addXP(200);else if(sc>=15)addXP(120);else if(sc>=10)addXP(60);
+    document.getElementById('main').innerHTML=`<div class="qw" style="text-align:center;padding:40px 0">
+    <div style="font-size:4rem;margin-bottom:16px">${sc>=18?'🏆':sc>=15?'🥇':sc>=10?'🥈':'📚'}</div>
+    <div class="fsyn" style="font-size:2rem;font-weight:800;color:var(--accent)">${sc}/${tot}</div>
+    <div style="font-size:1.1rem;color:var(--text2);margin:8px 0">${Math.round(sc/tot*100)}% Benar</div>
+    <div style="color:var(--text3);font-size:0.88rem;margin-bottom:28px">${sc>=18?'Luar biasa! Siap jadi konsultan pajak profesional!':sc>=15?'Sangat baik! Sedikit lagi ke level expert.':sc>=10?'Cukup baik. Pelajari lagi materi yang salah.':'Tetap semangat! Ulangi materi dasar dulu.'}</div>
+    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="btn btn-p" onclick="startQuiz()">🔄 Coba Lagi</button>
+      <button class="btn btn-s" onclick="navigate('modules')">📚 Pelajari Lagi</button>
+    </div></div>`;
+  }
+}
+function renderSim(){
+  const tabs=['PPh Final UMKM','PPh 21 TER','PPh Badan + 31E','PPN 12%','Rekonsiliasi Fiskal'];
+  return`<div><div class="section-title">🧮 Simulator Pajak 2026</div>
+  <div class="stabs">${tabs.map((t,i)=>`<div class="stab ${i===simTab?'active':''}" onclick="switchST(${i})">${t}</div>`).join('')}</div>
+  <div id="sc">${getSimC(simTab)}</div></div>`;
+}
+
+function switchST(i){simTab=i;document.querySelectorAll('.stab').forEach((t,j)=>t.classList.toggle('active',j===i));document.getElementById('sc').innerHTML=getSimC(i);}
+
+function getSimC(i){
+  if(i===0)return`<div class="card"><div class="fsyn fb mb4">Kalkulator PPh Final UMKM 0,5%</div>
+    <div class="g2">
+      <div>
+        <div class="fg"><label class="fl">Omzet Bulanan (Rp)</label><input class="fi" id="u-o" type="number" placeholder="Masukkan omzet" oninput="cU()"></div>
+        <div class="fg"><label class="fl">Jenis Subjek</label><select class="fs" id="u-j" onchange="cU()">
+          <option value="op">WP OP (bukan pekerjaan bebas)</option>
+          <option value="pt">PT Perorangan</option>
+          <option value="kop">Koperasi</option>
+          <option value="cv">CV (transisi s/d akhir 2026)</option>
+          <option value="bebas">WP OP Pekerjaan Bebas</option>
+        </select></div>
+      </div>
+      <div id="ur"><div class="rb" style="color:var(--text3);font-size:0.85rem;padding:20px;text-align:center">Masukkan data untuk menghitung</div></div>
+    </div></div>`;
+  if(i===1)return`<div class="card"><div class="fsyn fb mb4">Kalkulator PPh 21 Metode TER</div>
+    <div class="g2">
+      <div>
+        <div class="fg"><label class="fl">Gaji Bruto Bulanan (Rp)</label><input class="fi" id="p-g" type="number" placeholder="Misal: 10000000" oninput="cP()"></div>
+        <div class="fg"><label class="fl">Status PTKP</label><select class="fs" id="p-p" onchange="cP()">
+          <option value="TK0">TK/0 — Rp54 juta</option><option value="TK1">TK/1 — Rp58,5 juta</option>
+          <option value="K0">K/0 — Rp58,5 juta</option><option value="K1">K/1 — Rp63 juta</option>
+          <option value="K2">K/2 — Rp67,5 juta</option><option value="K3">K/3 — Rp72 juta</option>
+        </select></div>
+        <div class="fg"><label class="fl">Bulan</label><select class="fs" id="p-b" onchange="cP()">
+          ${Array.from({length:12},(_,k)=>`<option value="${k+1}">${k+1===12?'Desember (Rekonsiliasi)':'Bulan ke-'+(k+1)}</option>`).join('')}
+        </select></div>
+      </div>
+      <div id="pr"><div class="rb" style="color:var(--text3);padding:20px;text-align:center">Masukkan data</div></div>
+    </div></div>`;
+  if(i===2)return`<div class="card"><div class="fsyn fb mb4">Kalkulator PPh Badan + Fasilitas Pasal 31E</div>
+    <div class="g2">
+      <div>
+        <div class="fg"><label class="fl">Omzet Bruto Setahun (Rp)</label><input class="fi" id="b-o" type="number" placeholder="Misal: 25000000000" oninput="cB()"></div>
+        <div class="fg"><label class="fl">PKP — Penghasilan Kena Pajak (Rp)</label><input class="fi" id="b-p" type="number" placeholder="Misal: 3195000000" oninput="cB()"></div>
+      </div>
+      <div id="br"><div class="rb" style="color:var(--text3);padding:20px;text-align:center">Masukkan data</div></div>
+    </div></div>`;
+  if(i===3)return`<div class="card"><div class="fsyn fb mb4">Kalkulator PPN 12%</div>
+    <div class="g2">
+      <div>
+        <div class="fg"><label class="fl">Harga Jual / DPP (Rp)</label><input class="fi" id="v-d" type="number" placeholder="Misal: 100000000" oninput="cV()"></div>
+        <div class="fg"><label class="fl">Pajak Masukan Dikreditkan (Rp)</label><input class="fi" id="v-m" type="number" placeholder="PM dari pembelian" oninput="cV()"></div>
+        <div class="fg"><label class="fl">Fasilitas PPN</label><select class="fs" id="v-f" onchange="cV()">
+          <option value="none">Tidak ada fasilitas</option>
+          <option value="ndp">Tidak Dipungut (PM dapat dikreditkan)</option>
+          <option value="dbs">Dibebaskan (PM tidak dapat dikreditkan)</option>
+        </select></div>
+      </div>
+      <div id="vr"><div class="rb" style="color:var(--text3);padding:20px;text-align:center">Masukkan data</div></div>
+    </div></div>`;
+  if(i===4)return`<div class="card"><div class="fsyn fb mb4">Kalkulator Rekonsiliasi Fiskal Sederhana</div>
+    <div class="g2">
+      <div>
+        <div class="fg"><label class="fl">Laba Komersial (Rp)</label><input class="fi" id="r-l" type="number" placeholder="Laba sebelum pajak" oninput="cR()"></div>
+        <div class="fg"><label class="fl">+ Biaya Suap/Gratifikasi (Ps.20A) (Rp)</label><input class="fi" id="r-s" type="number" placeholder="0" oninput="cR()"></div>
+        <div class="fg"><label class="fl">+ Denda Pajak (Ps.9(1)k) (Rp)</label><input class="fi" id="r-d" type="number" placeholder="0" oninput="cR()"></div>
+        <div class="fg"><label class="fl">+ Entertainment tanpa Nominatif (Rp)</label><input class="fi" id="r-e" type="number" placeholder="0" oninput="cR()"></div>
+        <div class="fg"><label class="fl">+ Selisih Penyusutan Fiskal (Rp)</label><input class="fi" id="r-c" type="number" placeholder="0" oninput="cR()"></div>
+        <div class="fg"><label class="fl">− Dividen bukan objek pajak (Rp)</label><input class="fi" id="r-dv" type="number" placeholder="0" oninput="cR()"></div>
+        <div class="fg"><label class="fl">Omzet Bruto (untuk cek 31E) (Rp)</label><input class="fi" id="r-o" type="number" placeholder="Misal: 25000000000" oninput="cR()"></div>
+      </div>
+      <div id="rr"><div class="rb" style="color:var(--text3);padding:20px;text-align:center">Masukkan data</div></div>
+    </div></div>`;
+  return'';
+}
+
+function fmt(n){return'Rp '+Number(n).toLocaleString('id-ID');}
+
+function cU(){
+  const o=parseFloat(document.getElementById('u-o').value)||0;
+  const j=document.getElementById('u-j').value;
+  const el=document.getElementById('ur');
+  if(!o){el.innerHTML='<div class="rb" style="color:var(--text3);padding:20px;text-align:center">Masukkan omzet</div>';return;}
+  const ot=o*12;
+  if(j==='bebas'){el.innerHTML=`<div class="rb"><div class="rr"><span>Jenis WP</span><span class="rv" style="color:var(--red)">Pekerjaan Bebas</span></div><div class="rr"><span>PPh Final 0,5%</span><span class="rv" style="color:var(--red)">❌ Tidak Bisa</span></div><div class="rr tot"><span>Rezim Pajak</span><span class="rv">NPPN + Progresif</span></div></div>`;return;}
+  if(j==='cv'){const bisa=ot<=4.8e9;el.innerHTML=`<div class="rb"><div class="rr"><span>Omzet Tahunan</span><span class="rv">${fmt(ot)}</span></div><div class="rr"><span>Status CV</span><span class="rv" style="color:var(--accent)">⏳ Transisi s/d 2026</span></div>${bisa?`<div class="rr"><span>PPh Final/bulan</span><span class="rv">${fmt(o*0.005)}</span></div>`:'<div class="rr"><span>Status</span><span class="rv" style="color:var(--red)">Omzet > 4,8M!</span></div>'}<div class="rr tot"><span>Mulai 2027</span><span class="rv" style="color:var(--red)">PPh Badan 22%</span></div></div>`;return;}
+  const bisa=ot<=4.8e9;
+  el.innerHTML=`<div class="rb"><div class="rr"><span>Omzet/Bulan</span><span class="rv">${fmt(o)}</span></div><div class="rr"><span>Omzet Tahunan</span><span class="rv">${fmt(ot)}</span></div><div class="rr"><span>Batas Rp4,8 M</span><span class="rv" style="color:${bisa?'var(--green)':'var(--red)'}">${bisa?'✅ Memenuhi':'❌ Melebihi'}</span></div>${bisa?`<div class="rr"><span>PPh Final/Bulan (0,5%)</span><span class="rv">${fmt(o*0.005)}</span></div><div class="rr tot"><span>PPh Final Setahun</span><span class="rv">${fmt(ot*0.005)}</span></div>`:`<div class="rr tot"><span>Rezim</span><span class="rv" style="color:var(--red)">PPh Badan Normal</span></div>`}</div>`;
+}
+
+function cP(){
+  const g=parseFloat(document.getElementById('p-g').value)||0;
+  const pk=document.getElementById('p-p').value;
+  const bl=parseInt(document.getElementById('p-b').value)||1;
+  const el=document.getElementById('pr');
+  if(!g){el.innerHTML='<div class="rb" style="color:var(--text3);padding:20px;text-align:center">Masukkan gaji</div>';return;}
+  const pm={TK0:54e6,TK1:58.5e6,K0:58.5e6,K1:63e6,K2:67.5e6,K3:72e6};
+  const tc={TK0:'A',TK1:'A',K0:'B',K1:'B',K2:'C',K3:'C'};
+  const ptkp=pm[pk];const cat=tc[pk];
+  const tr=g<=5e6?0:g<=6e6?.01:g<=10.5e6?.015:g<=11e6?.02:g<=15e6?.03:g<=20e6?.05:g<=26e6?.06:g<=50e6?.1:g<=150e6?.15:.2;
+  const pb=Math.round(g*tr);
+  const gs=g*12;const bj=Math.min(gs*.05,6e6);const nt=gs-bj;const pkp=Math.max(0,nt-ptkp);
+  let ps=0;if(pkp<=60e6)ps=pkp*.05;else if(pkp<=250e6)ps=3e6+(pkp-60e6)*.15;else if(pkp<=500e6)ps=31.5e6+(pkp-250e6)*.25;else if(pkp<=5e9)ps=94e6+(pkp-500e6)*.3;else ps=1429e6+(pkp-5e9)*.35;
+  const pd=Math.max(0,ps-(pb*11));const pa=bl<12?pb:pd;
+  el.innerHTML=`<div class="rb"><div class="rr"><span>Gaji Bruto/Bulan</span><span class="rv">${fmt(g)}</span></div><div class="rr"><span>Kategori TER</span><span class="rv">${cat}</span></div><div class="rr"><span>Tarif TER (estimasi)</span><span class="rv">${(tr*100).toFixed(1)}%</span></div><div class="rr"><span>PPh 21 Jan-Nov/bulan</span><span class="rv">${fmt(pb)}</span></div><div class="rr"><span>PTKP (${pk})</span><span class="rv">${fmt(ptkp)}</span></div><div class="rr"><span>PKP Setahun</span><span class="rv">${fmt(pkp)}</span></div><div class="rr"><span>PPh Terutang Setahun</span><span class="rv">${fmt(Math.round(ps))}</span></div><div class="rr tot"><span>PPh Bulan ke-${bl}</span><span class="rv">${fmt(Math.round(pa))}</span></div></div>`;
+}
+
+function cB(){
+  const o=parseFloat(document.getElementById('b-o').value)||0;
+  const p=parseFloat(document.getElementById('b-p').value)||0;
+  const el=document.getElementById('br');
+  if(!o||!p){el.innerHTML='<div class="rb" style="color:var(--text3);padding:20px;text-align:center">Masukkan omzet dan PKP</div>';return;}
+  const h=o<=50e9;let pph=0,pr=0,pd=0,pn=0;
+  if(h){pr=(4.8e9/o)*p;pd=pr*.11;pn=(p-pr)*.22;pph=pd+pn;}else pph=p*.22;
+  el.innerHTML=`<div class="rb"><div class="rr"><span>Omzet Bruto</span><span class="rv">${fmt(o)}</span></div><div class="rr"><span>PKP</span><span class="rv">${fmt(p)}</span></div><div class="rr"><span>Fasilitas Pasal 31E</span><span class="rv" style="color:${h?'var(--green)':'var(--red)'}">${h?'✅ Berlaku':'❌ Tidak Berlaku'}</span></div>${h?`<div class="rr"><span>Porsi PKP Diskon (11%)</span><span class="rv">${fmt(Math.round(pr))}</span></div><div class="rr"><span>PPh Porsi Diskon</span><span class="rv">${fmt(Math.round(pd))}</span></div><div class="rr"><span>PPh Porsi Normal (22%)</span><span class="rv">${fmt(Math.round(pn))}</span></div>`:''}<div class="rr tot"><span>Total PPh Badan</span><span class="rv">${fmt(Math.round(pph))}</span></div><div class="rr"><span>Tarif Efektif</span><span class="rv">${(pph/p*100).toFixed(2)}%</span></div></div>`;
+}
+
+function cV(){
+  const d=parseFloat(document.getElementById('v-d').value)||0;
+  const m=parseFloat(document.getElementById('v-m').value)||0;
+  const f=document.getElementById('v-f').value;
+  const el=document.getElementById('vr');
+  if(!d){el.innerHTML='<div class="rb" style="color:var(--text3);padding:20px;text-align:center">Masukkan DPP</div>';return;}
+  const pk=f==='ndp'?0:d*.12;const pmk=f==='dbs'?0:m;const ter=pk-pmk;
+  el.innerHTML=`<div class="rb"><div class="rr"><span>DPP (Harga Jual)</span><span class="rv">${fmt(d)}</span></div><div class="rr"><span>PK (12% × DPP)</span><span class="rv">${f==='ndp'?'Tidak Dipungut':fmt(pk)}</span></div><div class="rr"><span>PM Dapat Dikreditkan</span><span class="rv" style="color:${f==='dbs'?'var(--red)':'var(--green)'}">${f==='dbs'?'❌ '+fmt(0)+' (dibebaskan)':'✅ '+fmt(pmk)}</span></div><div class="rr tot"><span>${ter>=0?'PPN Kurang Bayar':'PPN Lebih Bayar'}</span><span class="rv" style="color:${ter>=0?'var(--red)':'var(--green)'}">${fmt(Math.abs(Math.round(ter)))}</span></div>${f==='ndp'?'<div style="font-size:0.75rem;color:var(--accent);margin-top:8px">Tidak Dipungut: PM tetap dikreditkan → kemungkinan restitusi ✅</div>':''}${f==='dbs'?'<div style="font-size:0.75rem;color:var(--red);margin-top:8px">Dibebaskan: PM jadi beban biaya — tidak bisa dikreditkan ❌</div>':''}</div>`;
+}
+
+function cR(){
+  const l=parseFloat(document.getElementById('r-l').value)||0;
+  const s=parseFloat(document.getElementById('r-s').value)||0;
+  const d=parseFloat(document.getElementById('r-d').value)||0;
+  const e=parseFloat(document.getElementById('r-e').value)||0;
+  const c=parseFloat(document.getElementById('r-c').value)||0;
+  const dv=parseFloat(document.getElementById('r-dv').value)||0;
+  const o=parseFloat(document.getElementById('r-o').value)||0;
+  const el=document.getElementById('rr');
+  if(!l){el.innerHTML='<div class="rb" style="color:var(--text3);padding:20px;text-align:center">Masukkan laba komersial</div>';return;}
+  const kp=s+d+e+c;const kn=dv;const pkp=l+kp-kn;
+  let pph=0;const h31e=o>0&&o<=50e9;
+  if(h31e){const pr=(4.8e9/o)*pkp;pph=(pr*.11)+((pkp-pr)*.22);}else pph=pkp*.22;
+  el.innerHTML=`<div class="rb"><div class="rr"><span>Laba Komersial</span><span class="rv">${fmt(l)}</span></div>${s?`<div class="rr"><span>+ Biaya Suap (Ps.20A)</span><span class="rv" style="color:var(--red)">+${fmt(s)}</span></div>`:''} ${d?`<div class="rr"><span>+ Denda Pajak</span><span class="rv" style="color:var(--red)">+${fmt(d)}</span></div>`:''} ${e?`<div class="rr"><span>+ Entertainment</span><span class="rv" style="color:var(--red)">+${fmt(e)}</span></div>`:''} ${c?`<div class="rr"><span>+ Selisih Penyusutan</span><span class="rv" style="color:var(--red)">+${fmt(c)}</span></div>`:''} ${dv?`<div class="rr"><span>− Dividen bukan objek</span><span class="rv" style="color:var(--green)">−${fmt(dv)}</span></div>`:''}<div class="rr" style="border-top:1px solid var(--border2);padding-top:10px"><span><b>PKP</b></span><span class="rv">${fmt(Math.round(pkp))}</span></div>${h31e&&o?`<div class="rr"><span>Fasilitas Pasal 31E</span><span class="rv tg">✅ Berlaku</span></div>`:''}<div class="rr tot"><span>PPh Badan Terutang</span><span class="rv">${fmt(Math.round(pph))}</span></div>${pkp>0?`<div class="rr"><span>Tarif Efektif</span><span class="rv">${(pph/pkp*100).toFixed(2)}%</span></div>`:''}</div>`;
+}
+  const days=[
+  {day:'Hari 1', title:'KUP & Coretax Dasar', body:`
+<h4>1.1 Integrasi NIK sebagai NPWP</h4>
+<p><span class="ktag law">PMK 81/2024</span> <span class="ktag law">PENG-6/PJ.09/2024</span></p>
+<table class="kbt"><tr><th>Jenis WP</th><th>Format NPWP</th></tr>
+<tr><td>WP OP Penduduk Indonesia</td><td>NIK (16 digit) ATAU NPWP 15 digit</td></tr>
+<tr><td>WP OP Bukan Penduduk</td><td>NPWP 15 digit</td></tr>
+<tr><td>WP Badan</td><td>NPWP 15 digit</td></tr></table>
+<h4>1.2 Akun Wajib Pajak (AWP)</h4>
+<p>AWP adalah "kotak surat digital" resmi WP. Tanggal pengiriman ke AWP = tanggal resmi diterimanya keputusan DJP. WP yang telah memberikan persetujuan AWP: tanggal berlaku = tanggal pengiriman ke AWP.</p>
+<h4>1.3 Pembukuan vs Pencatatan (Pasal 28 UU KUP)</h4>
+<table class="kbt"><tr><th>Kriteria</th><th>Pembukuan</th><th>Pencatatan</th></tr>
+<tr><td>Subjek Wajib</td><td>WP Badan; WP OP omzet ≥ Rp4,8 M</td><td>WP OP omzet &lt; Rp4,8 M</td></tr>
+<tr><td>Metode Hitung</td><td>Laba fiskal (Penghasilan − Biaya 3M)</td><td>NPPN</td></tr>
+<tr><td>Kewajiban Simpan</td><td colspan="2">Minimal 10 tahun di Indonesia</td></tr></table>`},
+  {day:'Hari 2', title:'KUP Lanjutan — SKP & Sanksi', body:`
+<h4>2.1 Hierarki SKP</h4>
+<p>STP → SKPKB → SKPKBT → SKPN → SKPLB. SKPKB dalam 5 tahun sejak saat terutangnya pajak.</p>
+<h4>2.2 Sanksi SKPKB (UU HPP)</h4>
+<p>Sanksi bunga = (Suku Bunga Acuan + 20%) ÷ 12, per bulan, maksimum 24 bulan. Tidak lagi flat 2%/bulan.</p>
+<h4>2.3 Keberatan & Banding</h4>
+<ul><li>Keberatan: 3 bulan sejak SKPKB, SK terbit 12 bulan</li>
+<li>Banding: 3 bulan sejak SK Keberatan, syarat bayar 50% SKPKB</li>
+<li>Denda keberatan ditolak: 50% × selisih</li>
+<li>Denda banding ditolak: 100% × selisih</li></ul>`},
+  {day:'Hari 3', title:'SP2DK & Mitigasi Coretax', body:`
+<h4>3.1 SP2DK Era Coretax</h4>
+<p>SP2DK adalah instrumen DJP menanyakan perbedaan data tanpa memulai pemeriksaan formal. Batas respons: <b>14 hari kerja</b> sejak diterima di AWP. Tidak direspons → Surat Perintah Pemeriksaan (SP2).</p>
+<h4>3.2 Strategi Mitigasi</h4>
+<ul><li>Cek AWP rutin minimal 2x/minggu</li>
+<li>Rekonsiliasi SPT PPN vs PPh Badan setiap kuartal</li>
+<li>Bila ada gap: ajukan pembetulan SPT (sanksi lebih ringan dari SKPKB)</li></ul>`},
+  {day:'Hari 4', title:'PPh 21 — Subjek & Tarif', body:`
+<h4>4.1 Subjek PPh 21 (PMK 168/2023)</h4>
+<ul><li>Pegawai Tetap, Penerima Pensiun</li>
+<li>Pegawai Tidak Tetap / upah harian</li>
+<li>Bukan Pegawai: dokter, konsultan, artis, konten kreator</li>
+<li>Peserta Kegiatan: honorarium perlombaan/rapat</li></ul>
+<h4>4.2 PTKP Terkini</h4>
+<table class="kbt"><tr><th>Status</th><th>PTKP/Tahun</th></tr>
+<tr><td>TK/0</td><td>Rp54.000.000</td></tr><tr><td>K/0</td><td>Rp58.500.000</td></tr>
+<tr><td>K/1</td><td>Rp63.000.000</td></tr><tr><td>K/2</td><td>Rp67.500.000</td></tr>
+<tr><td>K/3</td><td>Rp72.000.000</td></tr></table>
+<h4>4.3 Tarif PPh OP (UU HPP)</h4>
+<table class="kbt"><tr><th>Lapisan PKP</th><th>Tarif</th></tr>
+<tr><td>s/d Rp60 juta</td><td>5%</td></tr><tr><td>Rp60–250 juta</td><td>15%</td></tr>
+<tr><td>Rp250–500 juta</td><td>25%</td></tr><tr><td>Rp500 jt–Rp5 M</td><td>30%</td></tr>
+<tr><td>&gt; Rp5 M</td><td>35% (baru UU HPP)</td></tr></table>`},
+  {day:'Hari 5', title:'TER & Gross Up PPh 21', body:`
+<h4>5.1 TER (PP 58/2023)</h4>
+<p>3 Kategori: A (TK/0, TK/1), B (K/0, K/1, TK/2, TK/3), C (K/2, K/3). Mekanisme: Jan-Nov gunakan tarif TER, Desember rekonsiliasi Pasal 17.</p>
+<h4>5.2 Gross Up</h4>
+<p>Tunjangan pajak senilai PPh 21 terutang diberikan pemberi kerja. Lapisan 5%: Tunjangan = PKP × (5/95). Manfaat: tunjangan pajak = biaya deductible → PPh Badan lebih kecil.</p>
+<h4>5.3 e-Bupot Unifikasi</h4>
+<p>Menggabungkan PPh 4(2), 15, 22, 23, 26. Data dicocokkan otomatis dengan SPT karyawan. Ketidaksesuaian → SP2DK.</p>`},
+  {day:'Hari 6', title:'PPh Potput — Pasal 22 & 23', body:`
+<h4>6.1 PPh Pasal 22 Impor</h4>
+<table class="kbt"><tr><th>Kondisi</th><th>Tarif</th></tr>
+<tr><td>Menggunakan API</td><td>2,5%</td></tr>
+<tr><td>Tanpa API</td><td>7,5%</td></tr>
+<tr><td>Barang mewah tertentu</td><td>10%</td></tr>
+<tr><td>Tanpa NPWP</td><td>+100% dari tarif normal</td></tr></table>
+<h4>6.2 PPh Pasal 23 Jasa</h4>
+<p>Tarif 2% (tanpa NPWP: 4%). Dasar pengenaan: bruto = seluruh tagihan, kecuali ada rincian material terpisah → hanya atas fee jasa bersih. Daftar jasa: PMK 141/2015.</p>`},
+  {day:'Hari 7', title:'PPh Final UMKM — PP 20/2026', body:`
+<h4>7.1 Latar Belakang PP 20/2026</h4>
+<p>Dua tujuan: (1) Penyempurnaan keadilan rezim PPh Final 0,5%; (2) Anti-KKN/OECD Compliance melalui Pasal 20A baru.</p>
+<h4>7.2 Subjek yang BOLEH (omzet ≤ Rp4,8 M)</h4>
+<p>✅ WP OP (bukan pekerjaan bebas), PT Perorangan, Koperasi. ❌ CV (transisi s/d akhir 2026), PT Biasa, Firma, WP OP Pekerjaan Bebas (Pasal 56(3)a).</p>
+<h4>7.3 Penggabungan Omzet Suami-Istri (Pasal 58(3))</h4>
+<p>Total = Omzet Suami + Omzet Istri + Omzet semua PT Perorangan (suami DAN istri). Dibandingkan batas Rp4,8 M.</p>`},
+  {day:'Hari 8', title:'PPh Badan & Anti-Mafia', body:`
+<h4>8.1 Rekonsiliasi Fiskal</h4>
+<p>Koreksi Positif (menambah PKP): biaya entertainment tanpa nominatif, denda pajak (Ps.9(1)k), selisih penyusutan, biaya suap (Ps.20A).</p>
+<p>Koreksi Negatif (mengurangi PKP): dividen dari perusahaan Indonesia kepemilikan ≥25%, penghasilan sudah dikenai PPh Final.</p>
+<h4>8.2 Pasal 20A — Anti-Mafia Clause <span class="ktag new">BARU</span></h4>
+<p>Biaya suap, gratifikasi sesuai UU Tipikor: NON-DEDUCTIBLE tanpa pengecualian. Latar belakang: aksesi OECD.</p>
+<h4>8.3 Tarif & Fasilitas Pasal 31E</h4>
+<p>Tarif umum: 22%. Fasilitas Pasal 31E (omzet ≤ Rp50 M): porsi PKP dari omzet ≤Rp4,8 M mendapat tarif 11% (diskon 50%).</p>`},
+  {day:'Hari 9', title:'PPN 2026 Dasar', body:`
+<h4>9.1 Tarif PPN 12% (berlaku 1 Januari 2025)</h4>
+<p>Tarif naik dari 11% menjadi 12% (UU HPP). Ekspor BKP/JKP: 0%.</p>
+<h4>9.2 BKP & JKP Dikecualikan</h4>
+<p>Bukan BKP: hasil tambang langsung, kebutuhan pokok (beras, jagung, sagu, kedelai, garam, daging, telur, susu, buah, sayuran), uang, emas batangan, surat berharga.</p>
+<p>Bukan JKP: jasa kesehatan, keuangan, pendidikan, tenaga kerja, perhotelan, keagamaan, penyiaran non-iklan, angkutan umum.</p>
+<h4>9.3 Fasilitas PPN</h4>
+<table class="kbt"><tr><th></th><th>Tidak Dipungut</th><th>Dibebaskan</th></tr>
+<tr><td>PPN terutang?</td><td>Ya, tidak dipungut</td><td>Tidak ada PPN</td></tr>
+<tr><td>PM dikreditkan?</td><td>YA ✅</td><td>TIDAK ❌</td></tr></table>`},
+  {day:'Hari 10', title:'PPN Pro — Faktur Pajak', body:`
+<h4>10.1 Syarat Faktur Pajak SAH (Pasal 13(5))</h4>
+<p>Nama/alamat/NPWP penjual dan pembeli, jenis BKP/JKP, jumlah harga, PPN, kode/nomor seri/tanggal, tanda tangan. Era Coretax: penomoran otomatis, TTD digital.</p>
+<h4>10.2 Faktur Pajak Cacat</h4>
+<p>Bagi Pembeli: PM tidak dapat dikreditkan (Pasal 9(8)f). Bagi Penjual: STP + denda 1% dari DPP (Pasal 14 UU KUP).</p>
+<h4>10.3 Nota Retur & Nota Pembatalan</h4>
+<table class="kbt"><tr><th></th><th>Nota Retur</th><th>Nota Pembatalan</th></tr>
+<tr><td>Untuk</td><td>Pengembalian BKP</td><td>Pembatalan JKP</td></tr>
+<tr><td>Diterbitkan</td><td>Pembeli BKP</td><td>Penerima JKP</td></tr>
+<tr><td>Efek PPN</td><td>PK penjual ↓, PM pembeli ↓</td><td>PK penyedia ↓, PM penerima ↓</td></tr></table>`},
+  {day:'Hari 11', title:'Transfer Pricing & GAAR', body:`
+<h4>11.1 Transfer Pricing</h4>
+<p>Hubungan Istimewa (Pasal 18(4)): kepemilikan ≥25%, penguasaan manajemen/teknologi, hubungan keluarga satu derajat.</p>
+<p>Metode: CUP, CPM (Cost Plus), RPM (Resale Price), TNMM (paling umum), PSM (Profit Split).</p>
+<p>Dokumentasi (PMK 172/2023): Master File + Local File. CbCR wajib untuk omzet konsolidasi ≥ Rp11 triliun.</p>
+<h4>11.2 GAAR</h4>
+<ul><li><b>Substance over Form:</b> DJP menilai substansi ekonomis, bukan bentuk hukum</li>
+<li><b>Thin Cap Rules (Pasal 18(1)):</b> Rasio utang-modal</li>
+<li><b>CFC Rules (Pasal 18(2)):</b> Penentuan saat dividen dari negara rendah pajak</li>
+<li><b>Anti Treaty Shopping, Pasal 20A (SAAR)</b></li></ul>`},
+  {day:'Hari 12', title:'Studi Kasus Komprehensif', body:`
+<h4>12.1 Kasus PT Maju Bersama Grup (Tahun Pajak 2026)</h4>
+<table class="kbt"><tr><th>Entitas</th><th>Omzet</th></tr>
+<tr><td>PT Maju Bersama (alat bangunan) — Hendra 50%+Dewi 50%</td><td>Rp25 M</td></tr>
+<tr><td>PT Perorangan HB (Tuan Hendra)</td><td>Rp1,5 M</td></tr>
+<tr><td>CV Dewi Jaya (Nyonya Dewi)</td><td>Rp2 M</td></tr></table>
+<h4>12.2 Rekonsiliasi Fiskal PT Maju Bersama</h4>
+<p>Laba Komersial Rp3 M + biaya gratifikasi Ps.20A Rp80 juta + denda pajak Rp15 juta + selisih penyusutan Rp100 juta = PKP Rp3.195.000.000.</p>
+<p>PPh Badan dengan Pasal 31E: Rp635.316.000 (porsi diskon 11% Rp67,6 juta + porsi normal 22% Rp567,7 juta).</p>
+<h4>12.3 Regulasi Kunci 2026</h4>
+<table class="kbt"><tr><th>Regulasi</th><th>Materi Utama</th></tr>
+<tr><td>PP 20/2026</td><td>Rezim baru UMKM, Pasal 20A, penggabungan omzet suami-istri</td></tr>
+<tr><td>PMK 81/2024</td><td>Kitab Hukum Coretax: AWP, pendaftaran WP, PKP</td></tr>
+<tr><td>PP 58/2023</td><td>TER PPh 21 — 3 kategori A, B, C</td></tr>
+<tr><td>PMK 168/2023</td><td>Teknis pemotongan PPh 21/26</td></tr>
+<tr><td>PMK 141/2015</td><td>Daftar jasa PPh 23 tarif 2%</td></tr>
+<tr><td>PENG-6/PJ.09/2024</td><td>Teknis NIK/NPWP dalam dokumen perpajakan</td></tr></table>`}
+  ];
+  return`<div class="section-title">📖 Knowledge Base — Modul Lengkap Pajak 2026</div>
+<div style="font-size:0.83rem;color:var(--text3);margin-bottom:20px">Ekstrak lengkap dari kedua modul PDF — Hari 1 s/d 12. Klik header untuk buka/tutup.</div>
+${days.map((d,i)=>`<div class="kbd">
+  <div class="kbh" onclick="toggleKB(${i})"><span>${d.day}: ${d.title}</span><span class="chev" id="kc${i}">▼</span></div>
+  <div class="kbb" id="kb${i}">${d.body}</div>
+</div>`).join('')}`;
+}
+
+function toggleKB(i){
+  document.getElementById('kb'+i).classList.toggle('open');
+  document.getElementById('kc'+i).classList.toggle('open');
+}
+
+function renderProgress(){
+  const dl=Object.values(STATE.cm).reduce((a,v)=>a+(v?v.length:0),0);
+  const tl=MODS.length*4;
+  const badges=[
+    {icon:'🎯',name:'Quiz Pertama',desc:'Selesaikan 1 quiz',earned:STATE.quizScore!==null},
+    {icon:'📚',name:'Pelajar Rajin',desc:'Selesaikan 3 level',earned:dl>=3},
+    {icon:'⚡',name:'XP 500',desc:'Kumpulkan 500 XP',earned:STATE.xp>=500},
+    {icon:'🏆',name:'Quiz Master',desc:'Skor 15+ di Quiz Master',earned:STATE.quizScore!==null&&STATE.quizScore>=15},
+    {icon:'🔐',name:'Ahli Coretax',desc:'Selesaikan modul KUP',earned:(STATE.cm[0]||[]).length===4},
+    {icon:'🏪',name:'UMKM Expert',desc:'Selesaikan modul PP 20/2026',earned:(STATE.cm[2]||[]).length===4},
+    {icon:'🏢',name:'Tax Consultant',desc:'Selesaikan 4 modul',earned:Object.values(STATE.cm).filter(v=>v&&v.length>=4).length>=4},
+    {icon:'👑',name:'Tax Master',desc:'Selesaikan semua modul',earned:Object.values(STATE.cm).filter(v=>v&&v.length>=4).length>=MODS.length},
+    {icon:'🌟',name:'Perfeksionist',desc:'Skor sempurna 20/20',earned:STATE.quizScore===20}
+  ];
+  const mc=Object.values(STATE.cm).filter(v=>v&&v.length>=4).length;
+  const COLORS=['var(--accent)','var(--blue)','var(--green)','var(--purple)','#ec4899','#f97316','#06b6d4','#84cc16'];
+  return`<div class="section-title">📊 Progress & Badge</div>
+<div class="g4 mb4">
+  <div class="stat-card ca"><div class="stat-val">${STATE.xp}</div><div class="stat-lbl">Total XP</div></div>
+  <div class="stat-card cb"><div class="stat-val">${STATE.level}</div><div class="stat-lbl">Level Saat Ini</div></div>
+  <div class="stat-card cc"><div class="stat-val">${dl}/${tl}</div><div class="stat-lbl">Level Selesai</div></div>
+  <div class="stat-card cd"><div class="stat-val">${badges.filter(b=>b.earned).length}</div><div class="stat-lbl">Badge Diraih</div></div>
+</div>
+<div style="margin-bottom:24px">
+  <div class="section-title" style="font-size:1rem;margin-bottom:16px">Progress per Modul</div>
+  ${MODS.map((m,i)=>{const d=STATE.cm[i]||[];const p=(d.length/4)*100;return`<div style="margin-bottom:12px">
+    <div class="fx fxb mb3"><span style="font-size:0.85rem">${m.emoji} ${m.title}</span><span style="font-size:0.8rem;color:var(--text3)">${d.length}/4</span></div>
+    <div class="mc-bar" style="height:6px;background:var(--bg3)"><div style="width:${p}%;height:100%;border-radius:3px;background:${COLORS[i]};transition:width 0.4s"></div></div>
+  </div>`;}).join('')}
+</div>
+<div class="section-title" style="font-size:1rem;margin-bottom:16px">🏅 Badge Koleksi</div>
+<div class="bgrid">${badges.map(b=>`<div class="bc2 ${b.earned?'earned':''}"><div class="bi">${b.icon}</div><div class="bn">${b.name}</div><div class="bd">${b.desc}</div></div>`).join('')}</div>`;
+}
+
+navigate('dashboard');
+</script>
+</body>
+</html>
